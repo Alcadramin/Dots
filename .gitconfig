@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = main
+[user]
+	email = berkcan@vivaldi.net
+	name = Berkcan Uçan
+	signingKey = DDCE2848B6CEEE0B
+[credential]
+	helper = cache --timeout=3600
+[commit]
+	gpgsign = true

@@ -1,0 +1,52 @@
+[options]
+font = mononoki Nerd Font Mono 11
+
+[colors]
+# Base16 Snazzy
+# Author: Chawye Hsu (https://github.com/h404bi) based on Hyper Snazzy Theme (https://github.com/sindresorhus/hyper-snazzy)
+
+foreground          = #e2e4e5
+foreground_bold     = #e2e4e5
+cursor              = #e2e4e5
+cursor_foreground   = #282a36
+background          = #282a36
+
+# 16 color space
+
+# Black, Gray, Silver, White
+color0  = #282a36
+color8  = #78787e
+color7  = #e2e4e5
+color15 = #f1f1f0
+
+# Red
+color1  = #ff5c57
+color9  = #ff5c57
+
+# Green
+color2  = #5af78e
+color10 = #5af78e
+
+# Yellow
+color3  = #f3f99d
+color11 = #f3f99d
+
+# Blue
+color4  = #57c7ff
+color12 = #57c7ff
+
+# Purple
+color5  = #ff6ac1
+color13 = #ff6ac1
+
+# Teal
+color6  = #9aedfe
+color14 = #9aedfe
+
+# Extra colors
+color16 = #ff9f43
+color17 = #b2643c
+color18 = #34353e
+color19 = #43454f
+color20 = #a5a5a9
+color21 = #eff0eb
