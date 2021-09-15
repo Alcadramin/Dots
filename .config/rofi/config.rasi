@@ -1,3 +1,6 @@
 configuration {
-	theme: "~/.config/rofi/themes/dmenu.rasi";
+  terminal: "kitty";
+  font: "Ubuntu Mono Semibold 12";
+  icon-theme: "Papirus";
+  theme: "~/.config/rofi/dracula-one/dracula-one-light.rasi";
 }

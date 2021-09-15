@@ -27,14 +27,14 @@ Details of my setup..
 
 I casually distro hopping and I need a quick solution so..
 
-- If your system is **Debian** or **Arch** based you can directly run [`setupEnvironment.sh`](setupEnvironment.sh) from your terminal, it will guide you through and automatically install apps & load dotfiles with your choices.
+- If your system is **Debian** or **Arch** based you can directly run [`setup.sh`](setup.sh) from your terminal, it will guide you through and automatically install apps & load dotfiles with your choices.
 
 - My configurations are heavily depends on [Nerd Fonts](https://www.nerdfonts.com/) please install all of them in advance, or you will see weird fonts 😓
 
 - If it's not, unfortunately you have to install these applications by hand and manually copy the files to your home directory.
 
 #
-### [`setupEnvironment.sh`](setupEnvironment.sh) is capable of: ✨
+### [`setup.sh`](setup.sh) is capable of: ✨
 
 - [x] Automatically detect your package manager and your OS.
 - [x] Install dependencies.

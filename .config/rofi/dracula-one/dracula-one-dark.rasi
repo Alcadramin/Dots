@@ -1,0 +1,152 @@
+/*
+ * ROFI Dracula One (Dark Variant)
+ *
+ * Based on Dracula Theme. (https://draculatheme.com/contribute)
+ *
+ * Author: Berkcan Ucan <berkcan@vivaldi.net> (bw3u)
+ * GitHub: @bw3u
+ *
+ */
+
+configuration {
+  modi: "combi,window,drun,ssh";
+  Combi-modi: "drun,window";
+  show-icons: true;
+  combi-hide-mode-prefix: true;
+  display-drun: "🔎 Run";
+  display-window: "🪟 Window";
+  display-combi: "🌎 Combi";
+  display-ssh: "📡 ssh";
+  drun-show-actions: true;
+  drun-display-format: "{name}";
+  disable-history: false;
+  fullscreen: false;
+  hide-scrollbar: true;
+  sidebar-mode: false;
+  auto-select: false;
+}
+
+* {
+  black:      #1b2229;
+  red:        #ff5555;
+  green:      #50fa7b;
+  yellow:     #f1fa8c;
+  blue:       #51afef;
+  magenta:    #c678dd;
+  cyan:       #8be9fd;
+  emphasis:   #2257a0;
+  text:       #bbc2cf;
+  text-alt:   #6272a4;
+  fg:         #f8f8f2;
+  bg:         #282a36dd;
+
+  input-bg: #44475a;
+  input-bg-alt: #3f444a;
+  background-color: transparent;
+  highlight: bold #f1fa8c;
+}
+
+window {
+  transparency: "real";
+  background-color: @bg;
+  text-color: @text;
+  border: 0px;
+  border-color: @red;
+  border-radius: 0px;
+}
+
+mainbox {
+  padding: 2% 1%;
+  children: [inputbar, listview, mode-switcher];
+}
+
+inputbar {
+  margin: 0px 0px 10px 0px;
+  padding: 0.5%;
+  expand: false;
+  border: 0% 0% 0% 0%;
+  border-radius: 5px;
+  background-color: @input-bg;
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+  enabled: true;
+  text-color: @red;
+  border: 0 1px 0 0;
+  padding: 0% 0% 0% 1%;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ":";
+  text-color: @text-alt;
+}
+
+entry {
+  margin: 0px 10px;
+  horizontal-align: 0;
+  text-color: @text;
+  placeholder: "Search";
+  placeholder-color: @text-alt;
+  blink: true;
+}
+
+listview {
+  spacing: 5px;
+  dynamic: true;
+  layout: vertical;
+  scrollbar: false;
+}
+
+element {
+  padding: 5px;
+  text-color: @text-alt;
+  border-radius: 5px;
+  orientation: horizontal;
+}
+
+element selected {
+  background-color: @emphasis;
+  text-color: @text;
+}
+
+element urgent, element selected urgent {
+  text-color: @red;
+}
+
+element active, element selected active {
+  text-color: @purple;
+}
+
+element-icon {
+  size: 2.5ch;
+}
+
+message {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @emphasis;
+  border: 1px;
+  border-color: @cyan;
+}
+
+button {
+  text-color: @text;
+  border-radius: 5px;
+}
+
+button selected {
+  background-color: @input-bg;
+}
+
+/*
+ * mode-switcher {
+ *  text-color: @text;
+ *  background-color: #3f444f;
+ * }
+ */
+
+/*
+ * vim: ft=css sw=2 ts=2
+ */

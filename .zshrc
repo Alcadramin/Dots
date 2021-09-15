@@ -1,16 +1,19 @@
 export ZSH="/home/bw3u/.oh-my-zsh"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
-export EDITOR="kak"
-export VISUAL="kak"
-export JAVA_HOME=/usr/lib/jvm/default
-#export NVM_LAZY_LOAD=true
-#export NVM_COMPLETION=true
+export EDITOR="nvim"
+export VISUAL="nvim"
+export JAVA_HOME="/usr/lib/jvm/java-11-amazon-corretto"
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+export DEBFULLNAME="Berkcan Ucan"
+export DEBEMAIL="berkcan@vivaldi.net"
+export NVM_SYMLINK_CURRENT=true
 
 ZSH_THEME="bw3u"
 plugins=(git
 				history
 				command-not-found
-				#zsh-nvm
+				zsh-nvm
 				emacs
 				#zsh-interactive-cd
 				zsh-autosuggestions
@@ -51,8 +54,11 @@ ex ()
 ### PATH ###
 export PATH="$PATH":"$HOME/.local/bin"
 export PATH="$PATH":"$HOME/.emacs.d/bin"
-export PATH="$PATH":"$HOME/Android/Sdk/platform-tools"
-export PATH="$PATH":"$HOME/Android/Sdk/tools"
+export PATH="$PATH":"$HOME/.android/sdk/platform-tools"
+export PATH="$PATH":"$HOME/.android/sdk/tools"
+export PATH="$PATH":"$HOME/.android/sdk"
+export ANDROID_SDK_ROOT=$HOME/.android/sdk
+export PATH=$PATH:/usr/local/go/bin
 
 ### MY ALIASES ###
 alias vim="nvim"
@@ -75,11 +81,25 @@ alias fgrep='fgrep --color=auto'
 alias jctl="journalctl -p 3 -xb"
 alias df='df -h'
 alias free='free -m'
+alias buildpkg="debuild -us -uc -i -k'DDCE2848B6CEEE0B' -S"
+alias signpkg="debsign -k'AB7F BC1E DB97 9025 26A8  C2EA DDCE 2848 B6CE EE0B'"
+alias chpkg="sudo chown -R bw3u:bw3u"
+alias uploadpkg="dput ppa:bw3u/focal"
+alias kubectl='microk8s kubectl'
+
+# Git
+alias gaa="git add ."
+alias gcm="git commit -m"
+alias gca="git commit --amend --no-edit"
+alias gst="git status"
+alias gps="git push -u origin main"
 
 colorscript --random
 
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
-#eval "$(starship init zsh)"
+
+# It's pretty neat but slows down zsh. https://starship.rs
+# eval "$(starship init zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc'; fi

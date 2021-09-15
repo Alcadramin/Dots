@@ -7,7 +7,7 @@ normal=$(tput sgr0)
 arrow="${color}${bold}=>${normal}"
 function _help() {
   echo "Berkcan Ucan (bw3u) <berkcan@vivaldi.net>"
-  echo "${bold}Description:${normal} This script will help you to setup your environment and load dotfiles."
+  echo "${bold}Description:${normal} This script will help you to setup your environment and load dotfiles as well as create a backup."
   echo ""
   echo "${bold}USAGE: ${normal}"
   echo "    sh -e setupEnvironment.sh [FLAGS] or ./setupEnvironment [FLAGS]"
@@ -15,7 +15,8 @@ function _help() {
   echo "${bold}FLAG: ${normal}"
   printf "${format_help}" \
     "-h, --help, help" "Print this help message" \
-    "-i, --install, help" "Install required applications and copy dotfiles (AUR helper is required for Arch based distributions)"
+    "-i, --install, help" "Install required applications and copy dotfiles (AUR helper is required for Arch based distributions)" \
+    "-b, --backup, backup" "Copy local dotfiles to this directory"
 }
 
 function _init() {
@@ -52,7 +53,7 @@ function _install() {
 }
 
 function withParu() {
-  echo "${arrow} Would you like to install utility apps? (picom, nitrogen, dmenu etc..): [yes/no]"
+  echo "${arrow} Would you like to install utility apps? (picom, nitrogen, dmenu etc..): (yes/no)"
   read INSTALL_UTILITY
 
   if [[ $INSTALL_UTILITY == "yes" || $INSTALL_UTILITY == "y" ]]; then
@@ -66,17 +67,19 @@ function withParu() {
     echo "${arrow} You chose: ${INSTALL_UTILITY}"
   fi
 
-  rsync -avxHAXP .config/picom/ .config/xrandr.sh .zshrc .profile .Xresources ~/
+  echo "${arrow} Copying dotfiles.."
 
-  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? [yes/no]"
+  rsync -avxRHAXP .oh-my-zsh/ .config/picom/ .zshrc .Xresources ~/
+
+  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? (yes/no)"
   read bw3u
 
   if [[ $bw3u == "yes" || $bw3u == "y" ]]; then
     echo "${arrow} Copying personal stuff.."
-    rsync -avxHAXP .gitconfig .xprofile ~/
+    rsync -avxRHAXP .gitconfig .xprofile .config/xrandr.sh .profile ~/
   fi
 
-  echo "${arrow} Would you like to install window manager and setup the dotfiles? [yes/no]"
+  echo "${arrow} Would you like to install window manager and setup the dotfiles? (yes/no)"
   read INSTALL_WM
 
   if [[ $INSTALL_WM == "yes" || $INSTALL_WM == "y" ]]; then
@@ -85,7 +88,7 @@ function withParu() {
     echo "${arrow} You chose: ${INSTALL_WM}"
   fi
 
-  echo "${arrow} Would you like to install terminal emulator and setup the dotfiles? [yes/no]"
+  echo "${arrow} Would you like to install terminal emulator and setup the dotfiles? (yes/no)"
   read INSTALL_WM
 
   if [[ $INSTALL_WM == "yes" || $INSTALL_WM == "y" ]]; then
@@ -96,7 +99,7 @@ function withParu() {
 }
 
 function withYay() {
-  echo "${arrow} Would you like to install utility apps? (picom, nitrogen, dmenu etc..): [yes/no]"
+  echo "${arrow} Would you like to install utility apps? (picom, nitrogen, dmenu etc..): (yes/no)"
   read INSTALL_UTILITY
 
   if [[ $INSTALL_UTILITY == "yes" || $INSTALL_UTILITY == "y" ]]; then
@@ -110,17 +113,17 @@ function withYay() {
     echo "${arrow} You chose: ${INSTALL_UTILITY}"
   fi
 
-  rsync -avxHAXP .config/picom/ .config/xrandr.sh .zshrc .profile .Xresources ~/
+  rsync -avxRHAXP .oh-my-zsh/ .config/picom/ .zshrc .Xresources ~/
 
-  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? [yes/no]"
+  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? (yes/no)"
   read bw3u
 
   if [[ $bw3u == "yes" || $bw3u == "y" ]]; then
     echo "${arrow} Copying personal stuff.."
-    rsync -avxHAXP .gitconfig .xprofile ~/
+    rsync -avxRHAXP .gitconfig .xprofile .config/xrandr.sh .profile ~/
   fi
 
-  echo "${arrow} Would you like to install window manager and setup the dotfiles? [yes/no]"
+  echo "${arrow} Would you like to install window manager and setup the dotfiles? (yes/no)"
   read INSTALL_WM
 
   if [[ $INSTALL_WM == "yes" || $INSTALL_WM == "y" ]]; then
@@ -129,7 +132,7 @@ function withYay() {
     echo "${arrow} You chose: ${INSTALL_WM}"
   fi
 
-  echo "${arrow} Would you like to install terminal emulator and setup the dotfiles? [yes/no]"
+  echo "${arrow} Would you like to install terminal emulator and setup the dotfiles? (yes/no)"
   read INSTALL_WM
 
   if [[ $INSTALL_WM == "yes" || $INSTALL_WM == "y" ]]; then
@@ -140,7 +143,7 @@ function withYay() {
 }
 
 function withApt() {
-  echo "${arrow} Would you like to install utility apps? (picom, nitrogen, dmenu etc..): [yes/no]"
+  echo "${arrow} Would you like to install utility apps? (picom, nitrogen, dmenu etc..): (yes/no)"
   read INSTALL_UTILITY
 
   if [[ $INSTALL_UTILITY == "yes" || $INSTALL_UTILITY == "y" ]]; then
@@ -154,17 +157,17 @@ function withApt() {
     echo "${arrow} You chose: ${INSTALL_UTILITY}"
   fi
 
-  rsync -avxHAXP .oh-my-zsh/ .config/picom/ .config/xrandr.sh .zshrc .profile .Xresources ~/
+  rsync -avxRHAXP .oh-my-zsh/ .config/picom/ .zshrc .Xresources ~/
 
-  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? [yes/no]"
+  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? (yes/no)"
   read bw3u
 
   if [[ $bw3u == "yes" || $bw3u == "y" ]]; then
     echo "${arrow} Copying personal stuff.."
-    rsync -avxHAXP .gitconfig .xprofile ~/
+    rsync -avxRHAXP .gitconfig .xprofile .config/xrandr.sh .profile ~/
   fi
 
-  echo "${arrow} Would you like to install window manager and setup the dotfiles? [yes/no]"
+  echo "${arrow} Would you like to install window manager and setup the dotfiles? (yes/no)"
   read INSTALL_WM
 
   if [[ $INSTALL_WM == "yes" || $INSTALL_WM == "y" ]]; then
@@ -173,7 +176,7 @@ function withApt() {
     echo "${arrow} You chose: ${INSTALL_WM}"
   fi
 
-  echo "${arrow} Would you like to install terminal emulator and setup the dotfiles? [yes/no]"
+  echo "${arrow} Would you like to install terminal emulator and setup the dotfiles? (yes/no)"
   read INSTALL_WM
 
   if [[ $INSTALL_WM == "yes" || $INSTALL_WM == "y" ]]; then
@@ -208,7 +211,7 @@ function windowManager() {
   clear
   case $CHOICE in
   1)
-    echo "${arrow} You chose Xmonad & Xmobar.. Starting installation and copying dotfiles.."
+    echo "${arrow} You chose Xmonad & Xmobar.. Starting installation and copying dotfiles & themes.."
 
     if [[ $pkgMan == "apt" ]]; then
       /usr/bin/sudo /usr/bin/$pkgMan install xmonad xmonad-contrib xmobar
@@ -216,12 +219,12 @@ function windowManager() {
       /usr/bin/$pkgMan -S xmonad xmonad-contrib xmobar
     fi
 
-    rsync -avxHAXP .xmonad/ .config/xmobar/ .themes/ .local/ ~/
+    rsync -avxRHAXP .xmonad/ .config/xmobar/ .themes/ .local/ ~/
     echo "${arrow} Job completed. Please edit dotfiles accordingly to your system. You can run this script again to install other WM's.."
     exit 1
     ;;
   2)
-    echo "You chose Qtile.. Starting installation and copying dotfiles.."
+    echo "You chose Qtile.. Starting installation and copying dotfiles & themes.."
 
     if [[ $pkgMan == "apt" ]]; then
       /usr/bin/sudo /usr/bin/$pkgMan install qtile
@@ -229,12 +232,12 @@ function windowManager() {
       /usr/bin/$pkgMan -S qtile
     fi
 
-    rsync -avxHAXP .config/qtile/ .themes/ .local/ ~/
+    rsync -avxRHAXP .config/qtile/ .themes/ .local/ ~/
     echo "${arrow} Job completed. Please edit dotfiles accordingly to your system. You can run this script again to install other WM's.."
     exit 1
     ;;
   3)
-    echo "You chose Spectrwm.. Starting installation and copying dotfiles.."
+    echo "You chose Spectrwm.. Starting installation and copying dotfiles & themes.."
 
     if [[ $pkgMan == "apt" ]]; then
       /usr/bin/sudo /usr/bin/$pkgMan install spectrwm
@@ -285,7 +288,7 @@ function terminalEmulator() {
       /usr/bin/$pkgMan -S alacritty
     fi
 
-    rsync -avxHAXP .config/alacritty.yml ~/
+    rsync -avxRHAXP .config/alacritty.yml ~/
 
     echo "${arrow} Job completed. Please edit dotfiles accordingly to your system. You can run this script again to install other terminal emulators.."
     exit 1
@@ -299,7 +302,7 @@ function terminalEmulator() {
       /usr/bin/$pkgMan -S termite
     fi
 
-    rsync -avxHAXP .config/termite/ .local/ ~/
+    rsync -avxRHAXP .config/termite/ .local/ ~/
     echo "${arrow} Job completed. Please edit dotfiles accordingly to your system. You can run this script again to install other terminal emulators.."
     exit 1
     ;;
@@ -310,10 +313,9 @@ function terminalEmulator() {
   esac
 }
 
-# TODO: Auto install & setup text editors.
-# function textEditors() {
-
-# }
+function _backup() {
+  echo "${arrow} Not implemented yet."
+}
 
 case "$#" in
 0)
@@ -327,6 +329,10 @@ case "$#" in
   -i | --install | install)
     _init
     _install
+    ;;
+  -b | --backup | backup)
+    _init
+    _backup
     ;;
   *)
     echo "Input error."

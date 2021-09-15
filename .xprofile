@@ -1,1 +1,1 @@
-sh -e /home/bw3u/.config/qtile/xrandr.sh
+sh -c /home/bw3u/.config/xrandr.sh
