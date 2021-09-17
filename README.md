@@ -1,8 +1,8 @@
 #
 ### 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/gitlab/stars/bw3u/dotfiles"/>
 
-<a href="https://i.imgur.com/dyrSZLH.png">
-  <img src="https://i.imgur.com/dyrSZLH.png" alt="minimal" align="right" width="400px"/>
+<a href="https://i.imgur.com/jOQRlHg.jpg">
+  <img src="https://i.imgur.com/jOQRlHg.jpg" alt="minimal" align="right" width="400px"/>
 </a>
 
 This is my **personal configuration** for my favorite window managers and some applications.
@@ -13,7 +13,7 @@ Details of my setup..
 - **Shell**                        • [Zsh](https://www.zsh.org/) 🐚 with [oh my zsh](https://github.com/ohmyzsh/ohmyzsh) framework.
 - **Terminal**                     • [Alacritty](https://github.com/alacritty/alacritty), [Termite](https://github.com/thestinger/termite) <kbd>available</kbd>.
 - **Compositor**                   • [Picom](https://github.com/yshui/picom) 🍩 rounded corners and blur!
-- **Application Launcher**         • [dmenu](https://tools.suckless.org/dmenu/) 🚀 blazing fast!
+- **Application Launcher**         • [dmenu](https://tools.suckless.org/dmenu/), [Rofi](https://github.com/davatorium/rofi) 🚀 blazing fast!
 - **File Manager**                 • [PCManFM](https://wiki.lxde.org/en/PCManFM) 🔖 world's lighweight file manager!
 - **Music Player**                 • [Spotify](https://www.spotify.com/us/download/linux/) 🍚 *riced!*
 - **GUI & CLI IDE/Text Editor**    • [Kakoune](https://kakoune.org/), [Neovim](https://neovim.io/) and the big boy [Doom Emacs](https://github.com/hlissner/doom-emacs) 😈
@@ -21,8 +21,8 @@ Details of my setup..
 #
 ### How to install? <img alt="" align="right" src="https://flat.badgen.net/gitlab/issues/bw3u/dotfiles"/>
 
-<a href="https://i.imgur.com/SVPji8D.jpg">
-  <img src="https://i.imgur.com/SVPji8D.jpg" alt="minimal" align="right" width="400px"/>
+<a href="https://i.imgur.com/dyrSZLH.png">
+  <img src="https://i.imgur.com/dyrSZLH.png" alt="minimal" align="right" width="400px"/>
 </a>
 
 I casually distro hopping and I need a quick solution so..
@@ -31,20 +31,21 @@ I casually distro hopping and I need a quick solution so..
 
 - If it's not, unfortunately you have to install these applications by hand and manually copy the files to your home directory.
 
-- My configurations are heavily depends on [Nerd Fonts](https://www.nerdfonts.com/) please install all of them in advance, or you will see weird fonts 😓
+
+* My configurations are heavily depends on [Nerd Fonts](https://www.nerdfonts.com/) please install all of them in advance, or you will see weird fonts 😓
 
 #
 ### [`setup.sh`](setup.sh) is capable of: ✨
 
 - [x] Automatically detect your package manager and your OS.
+- [x] Copy dotfiles to your home directory.
 - [x] Install dependencies.
 - [x] Install **Window Manager** after your choice (will prompt you a dialog).
 - [x] Install **Terminal Emulator** after your choice (will prompt you a dialog).
 - [ ] Install **Text Editor** after your choice. <kbd>not yet</kbd>
 - [ ] Install and setup **zsh** & **oh-my-zsh**. <kbd>not yet</kbd>
-- [x] Copy dotfiles to your home directory.
 
-If you have something in your mind and don't know shell scripting. Open an issue i'll take a look.
+If you have something in your mind and/or don't know shell scripting. Open an issue i'll take a look.
 
 #
 ### License <img alt="" align="right" src="https://flat.badgen.net/badge/license/MIT/blue"/>
