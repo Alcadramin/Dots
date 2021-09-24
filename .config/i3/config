@@ -1,0 +1,310 @@
+#########     Configuration    #########
+###           the easy stuff         ###
+    font pango: mononoki Nerd Font
+
+    # Key to do all the things (Mod1=Alt, Mod4=Super/Windows)
+        set $mod Mod4
+
+    # Home row direction keys, like vim
+        set $left h
+        set $down j
+        set $up k
+        set $right l
+
+    # Default Terminal
+        set $term kitty
+
+    # Autofocus on hover, also when switching workspaces
+        focus_follows_mouse yes
+
+    # Borders
+        # Also removes all title bars
+        for_window [class="^.*"] border pixel 3
+        default_border pixel 3
+        default_floating_border pixel 3
+
+        # Hide borders at the edge of the screen
+        hide_edge_borders smart
+
+        # Set colours various window states
+        # Syntax: client.<class> <border> <background> <text> [<indicator> [<child_border>]]
+        # The available classes are:
+            # client.focused: The window that has focus.
+            # client.focused_inactive: The most recently focused view within a container which is not focused.
+            # client.placeholder: Ignored (present for i3 compatibility).
+            # client.unfocused: A view that does not have focus.
+            # client.urgent: A view with an urgency hint. Note: Native Wayland windows do not support urgency. Urgency only works for Xwayland windows.
+        #The meaning of each color is:
+            # border: The border around the title bar.
+            # background: The background of the title bar.
+            # text: The text color of the title bar.
+            # indicator: The color used to indicate where a new view will open. In a tiled container, this would paint the right border of the current view if a new view would be opened to the right.
+            # child_border: The border around the view itself.
+        # The default colors are:
+            # class	        border	background	text    indicator	child_border			
+            # background	n/a	    #ffffff     n/a	    n/a	        n/a
+            # focused	    #4c7899	#285577	    #ffffff	#2e9ef4	    #285577
+            # focused_inactive	#333333	#5f676a	#ffffff	#484e50	    #5f676a
+            # unfocused	    #333333	#222222	    #888888	#292d2e	    #222222
+            # urgent	    #2f343a	#900000	    #ffffff	#900000	    #900000
+            # placeholder	#000000	#0c0c0c	    #ffffff	#000000 	#0c0c0c
+        client.focused           #9aa5ce #364A82 #c0caf5 #9aa5ce   #9aa5ce
+        client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
+        client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
+
+    # Gaps
+        # gaps inner|outer|horizontal|vertical|top|right|bottom|left <amount>
+        # Sets default amount pixels of inner or outer gap
+        # the inner affects spacing around each view
+        # the outer affects the spacing around each workspace
+        # To reduce or remove outer gaps, outer gaps can be set to a negative value.
+        gaps inner 5
+        gaps outer 2
+        gaps top 2
+        gaps bottom 2
+
+        # Hide gaps when there is only 1 window
+        smart_gaps on
+
+    # Press $mod+Shift+g to enter the gap mode. 
+    # Choose o or i for modifying outer/inner gaps.
+    # Press one of + / - (in-/decrement for current workspace) 
+    # or 0 (remove gaps for current workspace). If you also press Shift 
+    # with these keys, the change will be global for all workspaces.
+    set $mode_gaps Gaps: (o) outer, (i) inner
+    set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+    set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+    bindsym $mod+Shift+g mode "$mode_gaps"
+
+    mode "$mode_gaps" {
+            bindsym o      mode "$mode_gaps_outer"
+            bindsym i      mode "$mode_gaps_inner"
+            bindsym Return mode "default"
+            bindsym Escape mode "default"
+    }
+    mode "$mode_gaps_inner" {
+            bindsym plus  gaps inner current plus 5
+            bindsym minus gaps inner current minus 5
+            bindsym 0     gaps inner current set 0
+    
+            bindsym Shift+plus  gaps inner all plus 5
+            bindsym Shift+minus gaps inner all minus 5
+            bindsym Shift+0     gaps inner all set 0
+    
+            bindsym Return mode "default"
+            bindsym Escape mode "default"
+    }
+    mode "$mode_gaps_outer" {
+            bindsym plus  gaps outer current plus 5
+            bindsym minus gaps outer current minus 5
+            bindsym 0     gaps outer current set 0
+    
+            bindsym Shift+plus  gaps outer all plus 5
+            bindsym Shift+minus gaps outer all minus 5
+            bindsym Shift+0     gaps outer all set 0
+   
+            bindsym Return mode "default"
+            bindsym Escape mode "default"
+    }
+
+#########       Launchers      #########
+###         Menu for commands        ###
+
+    # Program Launcher
+        bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/grayblocks/scripts/rofi/launcher.rasi
+        bindsym $mod+y exec rofimoji --action copy
+
+    # Power menu
+        bindsym $mod+P exec ~/.config/wofi/wofi-power.sh
+
+#########    Key Bindindings   #########
+
+    # Start a terminal
+        bindsym $mod+Return exec $term
+
+    # Switch workspace to another monitor
+        bindsym $mod+Shift+h move workspace to output left
+        #bindsym $mod+Shift+j move workspace to output down
+        #bindsym $mod+Shift+k move workspace to output up
+        bindsym $mod+Shift+l move workspace to output right
+
+    # Move window
+        bindsym $mod+Shift+j move window to left
+        bindsym $mod+Shift+k move window to right
+
+    # Kill focused window
+        bindsym $mod+Shift+q kill
+
+    # Resize (floating and tiled) windows with mouse
+        floating_modifier $mod
+
+    # reload i3 config
+        bindsym $mod+Shift+c reload
+
+    # reload i3
+        bindsym $mod+Shift+r restart
+
+    # Exit i3 
+        bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+    #prev/next workspace. bind it to your mouse if you have a sticky keyboard
+        bindsym $mod+Shift+o workspace prev_on_output
+        bindsym $mod+Shift+p workspace next_on_output
+
+    # Switch to workspace
+        bindsym $mod+1 workspace number 1
+        bindsym $mod+2 workspace number 2
+        bindsym $mod+3 workspace number 3
+        bindsym $mod+4 workspace number 4
+        bindsym $mod+5 workspace number 5
+        bindsym $mod+6 workspace number 6
+        bindsym $mod+7 workspace number 7
+        bindsym $mod+8 workspace number 8
+        bindsym $mod+9 workspace number 9
+        bindsym $mod+0 workspace number 10
+
+    # Move focused container to workspace
+        bindsym $mod+Shift+1 move container to autotiling &workspace number 1
+        bindsym $mod+Shift+2 move container to workspace number 2
+        bindsym $mod+Shift+3 move container to workspace number 3
+        bindsym $mod+Shift+4 move container to workspace number 4
+        bindsym $mod+Shift+5 move container to workspace number 5
+        bindsym $mod+Shift+6 move container to workspace number 6
+        bindsym $mod+Shift+7 move container to workspace number 7
+        bindsym $mod+Shift+8 move container to workspace number 8
+        bindsym $mod+Shift+9 move container to workspace number 9
+        bindsym $mod+Shift+0 move container to workspace number 10
+
+    # Split direction
+        bindsym $mod+b splith
+        bindsym $mod+v splitv
+
+    # Make the current focused window fullscreen
+        bindsym $mod+f fullscreen
+
+    # Toggle focused window tiled/floating
+        bindsym $mod+Shift+t floating toggle
+
+    # Swap focus between the tiling area and the floating area
+        bindsym $mod+t focus mode_toggle
+
+    # Media keys
+        bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+        bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+        bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+        bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+        bindsym XF86AudioPlay exec playerctl play-pause
+        bindsym XF86AudioNext exec playerctl next
+        bindsym XF86AudioPrev exec playerctl previous
+
+    # Sreen brightness controls
+        bindsym XF86MonBrightnessDown exec light -U 5
+        bindsym XF86MonBrightnessUp exec light -A 5
+
+    # Screenshot shortcut
+        bindsym Print exec "flameshot gui"
+
+#########  Resizing Containers #########
+### $mod+mouseClick works better tho ###
+
+#   mode "resize" {
+#           bindsym h resize shrink width 10 px or 10 ppt
+#           bindsym j resize grow height 10 px or 10 ppt
+#           bindsym k resize shrink height 10 px or 10 ppt
+#           bindsym l resize grow width 10 px or 10 ppt
+#
+#       # same bindings, but for the arrow keys
+#           bindsym Left resize shrink width 10 px or 10 ppt
+#           bindsym Down resize grow height 10 px or 10 ppt
+#           bindsym Up resize shrink height 10 px or 10 ppt
+#           bindsym Right resize grow width 10 px or 10 ppt
+#
+#       # easier than quitting vim
+#           bindsym Return mode "default"
+#           bindsym Escape mode "default"
+#           bindsym $mod+r mode "default"
+#   }
+#   bindsym $mod+r mode "resize"
+
+# I am not fan of resize mode so..
+
+        bindsym $mod+h resize shrink width 3 px or 3 ppt
+        bindsym $mod+j resize grow height 3 px or 3 ppt
+        bindsym $mod+k resize shrink height 3 px or 3 ppt
+        bindsym $mod+l resize grow width 3 px or 3 ppt
+
+
+#########   Window Properties  #########
+###   Floating/Tiling / Workspaces   ###
+
+    # Floats
+        for_window [class="gnome-(calendar|calculator|power-statistics|control-center)"] floating enable
+        for_window [class="org.gnome.(Nautilus|Weather)"] floating enable
+        for_window [class="(pavucontrol|psensor)"] floating enable
+        for_window [class="nemo"] floating disable
+        for_window [class="mpv"] floating enable
+        for_window [class="mpv"] resize set 960 540
+        for_window [class="mpv"] border pixel 0
+        for_window [class="firefox-developer-edition" title="Firefox — Sharing Indicator"] floating enable
+        for_window [class="firefox-developer-edition" title="Picture-in-Picture"] floating enable
+        for_window [class="firefox-developer-edition" title="Pushbullet – Mozilla Firefox"] floating enable
+        for_window [class="firefox-developer-edition" title="About Mozilla Firefox"] floating enable
+        for_window [class="Gimp-2.10"] floating disable
+        for_window [class="Gimp-2.10" title="New Image"] floating enable
+        for_window [class="Gimp-2.10" title="Layer"] floating enable
+        for_window [class="Gimp-2.10" title="Tool"] floating enable
+        for_window [class="Gimp-2.10" title="Option"] floating enable
+        for_window [class="Gimp-2.10" title="Change"] floating enable
+
+    # Brave, chrome, chromium
+        for_window [title="Picture-in-picture"] floating enable
+
+    # Assign programs to workspace
+        assign [class="firefox-developer-edition"] → number 1
+        assign [class="codium"] → number 2
+        assign [class="discord"] → number 5
+        assign [class="Spotify"] → number 5
+        assign [class="Audacity"] → number 5
+        assign [class="Gmpc"] → number 6
+        assign [class="ario"] → number 6
+        assign [class="Thunderbird"] → number 8
+        assign [class="Bitwarden"] → number 9
+        # Some programs can be stubborn since they open a splash window before opening
+        for_window [class="discord"] move to workspace number 5
+        for_window [class="Spotify"] move to workspace number 5
+        for_window [class="Gimp-2.10"] move to workspace number 7
+        for_window [class="Gimp"] move to workspace number 7
+
+
+#########  Program Shortcuts  #########
+
+    bindsym Control+e exec emacs
+    bindsym $mod+e exec emacsclient -c -a 'emacs'
+    bindsym $mod+Shift+d exec pcmanfm
+
+
+#########   Launch Programs  #########
+###        We need dis stuff       ###
+# Applets
+    exec --no-startup-id nm-applet &
+    exec --no-startup-id volumeicon &
+    exec --no-startup-id xfce4-power-manager &
+    exec --no-startup-id /usr/libexec/polkitd &
+    exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+    exec --no-startup-id nitrogen --restore &
+    exec --no-startup-id picom &
+    # exec --no-startup-id /usr/bin/emacs --daemon & - Using systemd instead of this, much easier to restart!
+
+# Arch update notifications
+   # exec --no-startup-id kalu &
+
+# NOTE: we are using autotiling based on window dimensions
+# See https://github.com/nwg-piotr/autotiling
+    exec --no-startup-id autotiling &
+
+# start initial programs
+    #exec --no-startup-id ~/.config/i3/launchTerminals
+    #exec --no-startup-id ~/.config/i3/launchNemos
+
+# Finally start polybar
+    exec_always ~/.config/polybar/launch.sh --grayblocks &

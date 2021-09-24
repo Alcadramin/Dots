@@ -1,4 +1,18 @@
-PATH="$HOME/.local/bin:$PATH"
-export npm_config_prefix="$HOME/.local"
-export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-export JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+. "$HOME/.cargo/env"

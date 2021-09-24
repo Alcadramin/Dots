@@ -57,6 +57,7 @@ export PATH="$PATH":"$HOME/.emacs.d/bin"
 export PATH="$PATH":"$HOME/.android/sdk/platform-tools"
 export PATH="$PATH":"$HOME/.android/sdk/tools"
 export PATH="$PATH":"$HOME/.android/sdk"
+export GOPATH=$HOME/dev/go
 export ANDROID_SDK_ROOT=$HOME/.android/sdk
 export PATH=$PATH:/usr/local/go/bin
 
@@ -96,13 +97,20 @@ alias gps="git push -u origin main"
 
 colorscript --random
 
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+#[ -f $HOME/.miniconda3/etc/profile.d/conda.sh ] && source $HOME/.miniconda3/etc/profile.d/conda.sh
+[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
 
 # It's pretty neat but slows down zsh. https://starship.rs
 # eval "$(starship init zsh)"
+
+# NVM stuff
+#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/bw3u/.local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/bw3u/.local/lib/google-cloud-sdk/completion.zsh.inc'; fi
+
+export CUDA_HOME=/usr/local/cuda

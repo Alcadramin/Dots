@@ -19,10 +19,10 @@
 *.color15:    #E6E6E6
 
 !! URxvt Appearance
-URxvt.font: xft:UbuntuMono Nerd Font Mono:style=Regular:size=11
-URxvt.boldFont: xft:UbuntuMono Nerd Font Mono:style=Bold:size=11
-URxvt.italicFont: xft:UbuntuMono Nerd Font Mono:style=Italic:size=11
-URxvt.boldItalicfont: xft:UbuntuMono Nerd Font Mono:style=Bold Italic:size=11
+URxvt.font: xft:SauceCodePro Nerd Font:style=Regular:size=11
+URxvt.boldFont: xft:SauceCodePro Nerd Font:style=Bold:size=11
+URxvt.italicFont: xft:SauceCodePro Nerd Font:style=Italic:size=11
+URxvt.boldItalicfont: xft:SauceCodePro Nerd Font:style=Bold Italic:size=11
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 110x30

@@ -1,0 +1,22 @@
+VteTerminal,
+TerminalScreen,
+vte-terminal {
+    padding: 6px 6px 6px 6px;
+    -VteTerminal-inner-border: 6px 6px 6px 6px;
+}
+
+headerbar entry,
+headerbar spinbutton,
+headerbar button,
+headerbar separator {
+    margin-top: 0px; /* same as headerbar side padding for nicer proportions */
+    margin-bottom: 0px;
+}
+
+headerbar {
+    min-height: 24px;
+    padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
+    padding-right: 2px;
+    margin: 0px; /* same as headerbar side padding for nicer proportions */
+    padding: 0px;
+}
