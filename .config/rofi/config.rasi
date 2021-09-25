@@ -1,6 +1,6 @@
 configuration {
   terminal: "kitty";
   font: "Ubuntu Mono Semibold 12";
-  icon-theme: "Papirus";
-  theme: "~/.config/rofi/dracula-one/dracula-one-light.rasi";
+  icon-theme: "Papirus-Custom";
+  theme: "~/.config/rofi/grayblocks.rasi";
 }

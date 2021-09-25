@@ -1,3 +1,7 @@
+| My main desktop environment is Qtile |
+|--|
+| ![qtile](https://i.imgur.com/AXH9FMr.png) | 
+
 #
 ### 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/gitlab/stars/bw3u/dotfiles"/>
 
