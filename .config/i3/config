@@ -64,7 +64,7 @@
         gaps bottom 2
 
         # Hide gaps when there is only 1 window
-        smart_gaps on
+        # smart_gaps on
 
     # Press $mod+Shift+g to enter the gap mode. 
     # Choose o or i for modifying outer/inner gaps.
@@ -111,7 +111,7 @@
 ###         Menu for commands        ###
 
     # Program Launcher
-        bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/grayblocks/scripts/rofi/launcher.rasi
+        bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
         bindsym $mod+y exec rofimoji --action copy
 
     # Power menu
@@ -164,7 +164,8 @@
         bindsym $mod+0 workspace number 10
 
     # Move focused container to workspace
-        bindsym $mod+Shift+1 move container to autotiling &workspace number 1
+        #bindsym $mod+Shift+1 move container to autotiling &workspace number 1
+        bindsym $mod+Shift+1 move container to workspace number 1
         bindsym $mod+Shift+2 move container to workspace number 2
         bindsym $mod+Shift+3 move container to workspace number 3
         bindsym $mod+Shift+4 move container to workspace number 4
@@ -307,4 +308,4 @@
     #exec --no-startup-id ~/.config/i3/launchNemos
 
 # Finally start polybar
-    exec_always ~/.config/polybar/launch.sh --grayblocks &
+    exec_always ~/.config/polybar/launch.sh &
