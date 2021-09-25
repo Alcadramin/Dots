@@ -1,8 +1,8 @@
 #
 ### 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/gitlab/stars/bw3u/dotfiles"/>
 
-<a href="https://i.imgur.com/jOQRlHg.jpg">
-  <img src="https://i.imgur.com/jOQRlHg.jpg" alt="minimal" align="right" width="400px"/>
+<a href="https://i.imgur.com/15nq6HJ.png">
+  <img src="https://i.imgur.com/15nq6HJ.png" alt="i3" align="right" width="400px"/>
 </a>
 
 This is my **personal configuration** for my favorite window managers and some applications.
@@ -21,13 +21,13 @@ Details of my setup..
 #
 ### How to install? <img alt="" align="right" src="https://flat.badgen.net/gitlab/issues/bw3u/dotfiles"/>
 
-<a href="https://i.imgur.com/dyrSZLH.png">
-  <img src="https://i.imgur.com/dyrSZLH.png" alt="minimal" align="right" width="400px"/>
+<a href="https://i.imgur.com/mZO9Jg8.png">
+  <img src="https://i.imgur.com/mZO9Jg8.png" alt="emacs" align="right" width="400px"/>
 </a>
 
 I casually distro hopping and I need a quick solution so..
 
-- If your system is **Debian** or **Arch** based you can directly run [`setup.sh`](setup.sh) from your terminal, it will guide you through and automatically install apps & load dotfiles with your choices.
+- If your system is **Debian** or **Arch** based you can ~~directly run [`setup.sh`](setup.sh)~~ (**script is outdated use with caution**) from your terminal, it will guide you through and automatically install apps & load dotfiles with your choices.
 - If it's not, unfortunately you have to install these applications by hand and manually copy the files to your home directory.
 
 * My configurations are heavily depends on [Nerd Fonts](https://www.nerdfonts.com/) please install all of them in advance, or you will see weird fonts 😓
