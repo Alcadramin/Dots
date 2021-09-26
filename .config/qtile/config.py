@@ -11,15 +11,11 @@
 # Imports #
 
 import os
-import re
-import socket
 import subprocess
 from libqtile import qtile
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
-from libqtile.lazy import lazy
-from typing import List
 
 # Defaults #
 
@@ -43,7 +39,7 @@ keys = [
     Key(
         [mod, "shift"],
         "p",
-        lazy.spawn(os.path.expanduser("~/.config/wofi/wofi-power.sh")),
+        lazy.spawn(os.path.expanduser("~/.config/polybar/scripts/powermenu.sh")),
         desc="Rofi powermenu",
     ),
     Key(
@@ -52,6 +48,12 @@ keys = [
         lazy.spawn("betterlockscreen -l"),
         desc="Lock screen",
     ),
+    # Key(
+    #    [mod],
+    #    "space",
+    #    lazy.widget["keyboardlayout"].next_keyboard(),
+    #    desc="Next keyboard layout.",
+    # ),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"), # Didn't configured the bar properly, looks like shit.
     # Qtile controls
     Key([mod], "Tab", lazy.next_layout(), desc="Switch layout"),
@@ -98,7 +100,7 @@ keys = [
     ),
     Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc="toggle floating"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="toggle fullscreen"),
-    ### Stack controls
+    ## Stack controls
     Key(
         [mod, "shift"],
         "Tab",
@@ -149,6 +151,37 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    # Mpris usage example.
+    # Key(
+    #    [],
+    #    "XF86AudioPlay",
+    #    lazy.spawn(
+    #        "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify "
+    #        "/org/mpris/MediaPlayer2 "
+    #        "org.mpris.MediaPlayer2.Player.PlayPause"
+    #    ),
+    #    desc="Audio play",
+    # ),
+    # Key(
+    #    [],
+    #    "XF86AudioNext",
+    #    lazy.spawn(
+    #        "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify "
+    #        "/org/mpris/MediaPlayer2 "
+    #        "org.mpris.MediaPlayer2.Player.Next"
+    #    ),
+    #    desc="Audio next",
+    # ),
+    # Key(
+    #    [],
+    #    "XF86AudioPrev",
+    #    lazy.spawn(
+    #        "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify "
+    #        "/org/mpris/MediaPlayer2 "
+    #        "org.mpris.MediaPlayer2.Player.Previous"
+    #    ),
+    #    desc="Audio previous",
+    # ),
 ]
 
 
@@ -177,7 +210,7 @@ for i in range(len(groups)):
         Key([mod, "shift"], str((i)), lazy.window.togroup(str(i), switch_group=True))
     )
 
-# Navy and Ivory based. (["main color", "if diff. will be 2nd color which will be gradient"])
+# Navy and Ivory based. (["main color", "2nd color, if diff will be gradient"])
 colors = [
     ["#021b21", "#021b21"],  # 0
     ["#032c36", "#065f73"],  # 1
@@ -426,6 +459,36 @@ screens = [
                         "Button3": lambda: qtile.cmd_spawn("st -e pulsemixer")
                     },
                 ),
+                # Doesn't work with Spotify so its disabled!
+                # widget.TextBox(
+                #    text="\u2572",
+                #    font="Inconsolata for powerline",
+                #    fontsize="33",
+                #    padding=0,
+                #    background=colors[13],
+                #    foreground=colors[0],
+                # ),
+                # widget.Mpd2(
+                #   background=colors[13],
+                #   foreground=colors[0],
+                #   idle_message=" ",
+                #   idle_format="{idle_message} Not Playing",
+                #   status_format="  {artist}/{title} [{updating_db}]",
+                #   font="Iosevka Nerd Font",
+                #   fontsize=15,
+                # ),
+                # This one works with Spotify, enable if you want!
+                # widget.Mpris2(
+                #    background=colors[13],
+                #    foreground=colors[0],
+                #    name="spotify",
+                #    objname="org.mpris.MediaPlayer2.spotify",
+                #    fmt="\u2572   {}",
+                #    display_metadata=["xesam:title", "xesam:artist"],
+                #    scroll_chars=20,
+                #    font="Iosevka Nerd Font",
+                #    fontsize=15,
+                # ),
                 widget.TextBox(
                     text="\ue0be",
                     font="Inconsolata for powerline",
@@ -554,6 +617,8 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
+auto_fullscreen = True
+focus_on_window_activation = "smart"
 
 floating_layout = layout.Floating(
     float_rules=[
@@ -567,8 +632,6 @@ floating_layout = layout.Floating(
         Match(wm_class="MultiMC"),
     ]
 )
-auto_fullscreen = True
-focus_on_window_activation = "smart"
 
 
 @hook.subscribe.startup_once
