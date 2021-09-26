@@ -272,7 +272,11 @@ screens = [
                     fontsize="18",
                     background=colors[6],
                     foreground=colors[0],
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("xmenu.sh")},
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn(
+                            "rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi"
+                        )
+                    },
                 ),
                 widget.TextBox(
                     text="\ue0be",
@@ -383,7 +387,7 @@ screens = [
                     foreground=colors[2],
                     padding=5,
                     mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn("st -e storage.sh")
+                        "Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")
                     },
                 ),
                 widget.TextBox(
@@ -401,7 +405,9 @@ screens = [
                     foreground=colors[2],
                     background=colors[12],
                     padding=0,
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("st -e htop")},
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")
+                    },
                 ),
                 widget.Memory(
                     background=colors[12],
@@ -409,7 +415,9 @@ screens = [
                     font="Iosevka Nerd Font",
                     fontsize=15,
                     format="{MemUsed: .0f} MB",
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("st -e htop")},
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")
+                    },
                 ),
                 widget.Sep(
                     padding=8,
@@ -456,7 +464,7 @@ screens = [
                     font="Iosevka Nerd Font",
                     fontsize=15,
                     mouse_callbacks={
-                        "Button3": lambda: qtile.cmd_spawn("st -e pulsemixer")
+                        "Button3": lambda: qtile.cmd_spawn("kitty -e pulsemixer")
                     },
                 ),
                 # Doesn't work with Spotify so its disabled!
