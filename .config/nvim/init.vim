@@ -2,52 +2,57 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle For Managing Plugins
+" => Vundle For Managing Pluginins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-call plug#begin('~/.vim/plugged')
-
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 "{{ The Basics }}
-    Plug 'itchyny/lightline.vim'                       " Lightline statusbar
-    Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
-    Plug 'frazrepo/vim-rainbow'
-	Plug 'dracula/vim', { 'as': 'dracula' }
+    Plugin 'itchyny/lightline.vim'                       " Lightline statusbar
+    Plugin 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
+    Plugin 'frazrepo/vim-rainbow'
+    Plugin 'dracula/vim', { 'as': 'dracula' }
+    Plugin 'connorholyday/vim-snazzy'                    " Snazzy theme!
 "{{ File management }}
-    Plug 'vifm/vifm.vim'                               " Vifm
-    Plug 'scrooloose/nerdtree'                         " Nerdtree
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
-    Plug 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
+    Plugin 'vifm/vifm.vim'                               " Vifm
+    Plugin 'scrooloose/nerdtree'                         " Nerdtree
+    Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
+    Plugin 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
 "{{ Productivity }}
-    Plug 'vimwiki/vimwiki'                             " VimWiki 
-    Plug 'jreybert/vimagit'                            " Magit-like plugin for vim
-"{{ Tim Pope Plugins }}
-    Plug 'tpope/vim-surround'                          " Change surrounding marks
+    Plugin 'vimwiki/vimwiki'                             " VimWiki 
+    Plugin 'jreybert/vimagit'                            " Magit-like plugin for vim
+"{{ Tim Pope Pluginins }}
+    Plugin 'tpope/vim-surround'                          " Change surrounding marks
 "{{ Syntax Highlighting and Colors }}
-    Plug 'PotatoesMaster/i3-vim-syntax'                " i3 config highlighting
-    Plug 'kovetskiy/sxhkd-vim'                         " sxhkd highlighting
-    Plug 'vim-python/python-syntax'                    " Python highlighting
-    Plug 'ap/vim-css-color'                            " Color previews for CSS
-"{{ Junegunn Choi Plugins }}
-    Plug 'junegunn/goyo.vim'                           " Distraction-free viewing
-    Plug 'junegunn/limelight.vim'                      " Hyperfocus on a range
-    Plug 'junegunn/vim-emoji'                          " Vim needs emojis!
+    Plugin 'PotatoesMaster/i3-vim-syntax'                " i3 config highlighting
+    Plugin 'kovetskiy/sxhkd-vim'                         " sxhkd highlighting
+    Plugin 'vim-python/python-syntax'                    " Python highlighting
+    Plugin 'ap/vim-css-color'                            " Color previews for CSS
+    Plugin 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+"{{ Junegunn Choi Pluginins }}
+    Plugin 'junegunn/goyo.vim'                           " Distraction-free viewing
+    Plugin 'junegunn/limelight.vim'                      " Hyperfocus on a range
+    Plugin 'junegunn/vim-emoji'                          " Vim needs emojis!
+"{{ Helpers }}
+    Plugin 'nvim-lua/completion-nvim'                    " Autocomplete.
+    Plugin 'nvim-lua/plenary.nvim'
+    Plugin 'nvim-telescope/telescope.nvim'
+    Plugin 'neovim/nvim-lspconfig'
 
-call plug#end()
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-colorscheme ron
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colorscheme & Customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme snazzy
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+highlight Comment cterm=italic
+set guifont=Victor\ Mono:h11
 
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 " filetype plugin on
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Settings
@@ -70,12 +75,46 @@ let g:rehash256 = 1
 " Remap ESC to ii
 :imap ii <Esc>
 
+" Remap Leader to SPACE
+map <Space> <Leader>
+
+" Move line
+nnoremap <A-Up> :m-2<CR>
+nnoremap <A-Down> :m+<CR>
+inoremap <A-Up> <Esc>:m-2<CR>
+inoremap <A-Down> <Esc>:m+<CR>
+
+" Basics
+nnoremap <Leader>fs :w<CR>
+nnoremap <Leader>wq :wq<CR>
+nnoremap <Leader>qq :q<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+let g:completion_enable_auto_popup = 0
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status Line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The lightline.vim theme
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
+      \ 'colorscheme': 'one',
       \ }
 
 " Always show statusline
@@ -98,59 +137,12 @@ set tabstop=4                   " One tab == four spaces.
 " Uncomment to autostart the NERDTree
 " autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '►'
-let g:NERDTreeDirArrowCollapsible = '▼'
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize=38
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Theming
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"highlight LineNr           ctermfg=8    ctermbg=none    cterm=none
-"highlight CursorLineNr     ctermfg=7    ctermbg=8       cterm=none
-"highlight VertSplit        ctermfg=0    ctermbg=8       cterm=none
-"highlight Statement        ctermfg=2    ctermbg=none    cterm=none
-"highlight Directory        ctermfg=4    ctermbg=none    cterm=none
-"highlight StatusLine       ctermfg=7    ctermbg=8       cterm=none
-"highlight StatusLineNC     ctermfg=7    ctermbg=8       cterm=none
-"highlight NERDTreeClosable ctermfg=2
-"highlight NERDTreeOpenable ctermfg=8
-"highlight Comment          ctermfg=4    ctermbg=none    cterm=italic
-"highlight Constant         ctermfg=12   ctermbg=none    cterm=none
-"highlight Special          ctermfg=4    ctermbg=none    cterm=none
-"highlight Identifier       ctermfg=6    ctermbg=none    cterm=none
-"highlight PreProc          ctermfg=5    ctermbg=none    cterm=none
-"highlight String           ctermfg=12   ctermbg=none    cterm=none
-"highlight Number           ctermfg=1    ctermbg=none    cterm=none
-"highlight Function         ctermfg=1    ctermbg=none    cterm=none
-" highlight WildMenu         ctermfg=0       ctermbg=80      cterm=none
-" highlight Folded           ctermfg=103     ctermbg=234     cterm=none
-" highlight FoldColumn       ctermfg=103     ctermbg=234     cterm=none
-" highlight DiffAdd          ctermfg=none    ctermbg=23      cterm=none
-" highlight DiffChange       ctermfg=none    ctermbg=56      cterm=none
-" highlight DiffDelete       ctermfg=168     ctermbg=96      cterm=none
-" highlight DiffText         ctermfg=0       ctermbg=80      cterm=none
-" highlight SignColumn       ctermfg=244     ctermbg=235     cterm=none
-" highlight Conceal          ctermfg=251     ctermbg=none    cterm=none
-" highlight SpellBad         ctermfg=168     ctermbg=none    cterm=underline
-" highlight SpellCap         ctermfg=80      ctermbg=none    cterm=underline
-" highlight SpellRare        ctermfg=121     ctermbg=none    cterm=underline
-" highlight SpellLocal       ctermfg=186     ctermbg=none    cterm=underline
-" highlight Pmenu            ctermfg=251     ctermbg=234     cterm=none
-" highlight PmenuSel         ctermfg=0       ctermbg=111     cterm=none
-" highlight PmenuSbar        ctermfg=206     ctermbg=235     cterm=none
-" highlight PmenuThumb       ctermfg=235     ctermbg=206     cterm=none
-" highlight TabLine          ctermfg=244     ctermbg=234     cterm=none
-" highlight TablineSel       ctermfg=0       ctermbg=247     cterm=none
-" highlight TablineFill      ctermfg=244     ctermbg=234     cterm=none
-" highlight CursorColumn     ctermfg=none    ctermbg=236     cterm=none
-" highlight CursorLine       ctermfg=none    ctermbg=236     cterm=none
-" highlight ColorColumn      ctermfg=none    ctermbg=236     cterm=none
-" highlight Cursor           ctermfg=0       ctermbg=5       cterm=none
-" highlight htmlEndTag       ctermfg=114     ctermbg=none    cterm=none
-" highlight xmlEndTag        ctermfg=114     ctermbg=none    cterm=none
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vifm
@@ -221,5 +213,31 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+set termguicolors
+let g:Hexokinase_highlighters = [
+\   'sign_column',
+\   'background',
+\   'backgroundfull',
+\   'foreground',
+\   'foregroundfull'
+\ ]
 
+
+" LSP Stuff
+sign define LspDiagnosticsSignError text=
+sign define LspDiagnosticsSignWarning text=
+sign define LspDiagnosticsSignInformation text=
+sign define LspDiagnosticsSignHint text=
+
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> ge    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
+
+nnoremap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
+xmap <silent> <leader>a <cmd>lua vim.lsp.buf.range_code_action()<CR>
 
