@@ -12,13 +12,13 @@
 * {
     background-color:       @bg;
     text-color:             @fga;
-	font:				 	"Iosevka Nerd Font 10";
+    font:                   "Iosevka Nerd Font 10";
 }
 
 window {
-    width:      			210px;
-    padding:    			25px;
-    border:					0px 0px 4px 0px;
+    width:                  210px;
+    padding:                25px;
+    border:                 0px 0px 4px 0px;
     border-radius:          0px;
     border-color:           @ac;
     location:               center;
@@ -26,6 +26,6 @@ window {
 }
 
 entry {
-    expand: 				true;
-    text-color:				@ac;
+    expand:                 true;
+    text-color:             @ac;
 }

@@ -1,17 +1,17 @@
 /*
- * Author	       : bw3u <berkcan@vivaldi.net>
- * Github	       : @bw3u
- * Gitlab	   	   : @bw3
- * Reddit	   	   : @panlazy   
+ * Author           : bw3u <berkcan@vivaldi.net>
+ * Github           : @bw3u
+ * Gitlab           : @bw3
+ * Reddit           : @panlazy
  * 
- * License	       : MIT
+ * License          : MIT
  */
 
 configuration {
     font:                           "Iosevka Nerd Font 10";
     show-icons:                     true;
     icon-theme:                     "Papirus-Breeze";
-    display-drun: 					" ";
+    display-drun:                   " ";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -35,7 +35,7 @@ window {
 }
 
 prompt {
-    enabled: 						true;
+    enabled:                        true;
     padding:                        2px 0px 0px 10px;
     background-color:               @al;
     text-color:                     @fg;
@@ -90,7 +90,7 @@ mainbox {
     border-radius:                  0px;
     border-color:                   @ac;
     children:                       [ inputbar, listview ];
-    spacing:                       	6px;
+    spacing:                        6px;
     padding:                        6px;
 }
 

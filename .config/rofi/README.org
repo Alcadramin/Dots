@@ -1,0 +1,12 @@
+#+TITLE: Rofi configuration
+
+I've several themes here but mainly using *"Navy and Ivory"* one which you can check out in ~themes/~ folder. This theme has 3 modes:
+ - Run
+ - Emoji
+ - Powermenu
+
+Here's some screenshots!
+
+#+CAPTION: Rofi Navy and Ivory colorscheme
+#+ATTR_HTML: :alt Rofi Navy and Ivory colorscheme :title Rofi bw3u :align center
+[[https://i.imgur.com/xLE8cYc.png]]

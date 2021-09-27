@@ -11,7 +11,7 @@ configuration {
     font:                           "Iosevka Nerd Font 10";
     show-icons:                     true;
     icon-theme:                     "Papirus-Breeze";
-    display-drun: 					" ";
+    display-drun:                   " ";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -35,17 +35,17 @@ window {
 }
 
 prompt {
-    enabled: 						true;
-	padding: 						12px 0px 0px 18px;
-	background-color: 				@al;
-	text-color: 					@fg;
-	font:							"Iosevka Nerd Font 14";
+    enabled:                        true;
+    padding:                        15px 0px 0px 18px;
+    background-color:               @al;
+    text-color:                     @fg;
+    font:                           "Iosevka Nerd Font 10";
 }
 
 textbox-prompt-colon {
-    padding: 						6px 0px -5px 5px;
-    background-color: 				@al;
-    text-color: 					@fg;
+    padding:                        6px 0px -5px 5px;
+    background-color:               @al;
+    text-color:                     @fg;
     expand:                         false;
     str:                            "神  ";
     font:                           "Iosevka Nerd Font 20";

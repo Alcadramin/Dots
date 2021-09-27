@@ -36,7 +36,7 @@ window {
 
 prompt {
     enabled:                        true;
-    padding:                        -5px 0px -5px 4px;
+    padding:                        -2px 0px -2px 4px;
     background-color:               @al;
     text-color:                     @fg;
     font:                           "Iosevka Nerd Font 20";
@@ -49,7 +49,7 @@ entry {
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search...";
-    padding:                        2px 0px 0px 6px;
+    padding:                        6px 0px 0px 6px;
     blink:                          true;
 }
 
