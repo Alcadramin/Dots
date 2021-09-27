@@ -1,6 +1,0 @@
-<svg width="20" height="20" version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-<g transform="translate(1.969,2)">
-<path class="ColorScheme-Text" d="M 8.031,2 C 4.9969,2 2.2653,3.2711 0,5.0156 L 8.031,14 9,12.906 V 11 h 1.014 C 10.033,9.365 11.356,8 13,8 c 0.108,0 0.21,0.022 0.314,0.033 L 16,5 C 13.743,3.2748 11.042,2 8.031,2 Z" opacity=".35"/>
-<path class="ColorScheme-Text" d="m13 9c-1.108 0-2 0.911-2 2.031v0.969h-1v4h6v-4h-1v-0.969c0-1.12-0.892-2.031-2-2.031zm0 1c0.554 0 1 0.442 1 1v1h-2v-1c0-0.558 0.446-1 1-1z"/>
-</g>
-</svg>

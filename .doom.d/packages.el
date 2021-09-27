@@ -53,3 +53,6 @@
 (package! dashboard)
 (package! dired-open)
 (package! centaur-tabs)
+(package! rainbow-mode)
+(package! resize-window)
+(package! company-tabnine) ;; I'll just try it out, works perfect with VSCode.
