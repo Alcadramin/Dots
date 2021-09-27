@@ -1,0 +1,9 @@
+<svg width="16" height="16" enable-background="new" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<title>Pop Symbolic Icon Theme</title>
+<g fill="#666">
+<path d="m3.334 2c-1.2839 0-2.334 1.05-2.334 2.334v7.332c0 1.2839 1.05 2.334 2.334 2.334h9.332c1.2839 0 2.334-1.05 2.334-2.334v-7.332c0-1.2839-1.05-2.334-2.334-2.334zm0 1h9.332c0.63079 0 1.1413 0.42036 1.2871 1h-11.906c0.14577-0.57964 0.65631-1 1.2871-1zm-1.334 3h12v5.666c0 0.74746-0.58651 1.334-1.334 1.334h-9.332c-0.74746 0-1.334-0.58652-1.334-1.334z" color="#000000" color-rendering="auto" dominant-baseline="auto" enable-background="accumulate" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+<rect x="11" y="11" width="2" height="1" enable-background="new"/>
+<rect x="3" y="7" width="8" height="2" enable-background="new"/>
+<rect x="3" y="10" width="3" height="2" enable-background="new"/>
+</g>
+</svg>

@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-NOTIFY_ICON=/usr/share/icons/Papirus/32x32/apps/system-software-update.svg
+##
+# Author: bw3u <berkcan@vivaldi.net>
+# Github: @bw3u
+# Gitlab: @bw3u
+# Reddit: @panlazy
+#
+# License: MIT
+
+NOTIFY_ICON=$HOME/.icons/Papirus-Breeze/32x32/apps/system-software-update.svg
 
 get_total_updates() { UPDATES=$(checkupdates 2>/dev/null | wc -l); }
 

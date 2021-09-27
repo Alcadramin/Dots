@@ -9,7 +9,6 @@
 # License: MIT
 
 # Imports #
-
 import os
 import subprocess
 from libqtile import qtile
@@ -18,28 +17,19 @@ from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
 # Defaults #
-
 mod = "mod4"  # Setting mod key to "SUPER"
 term = "kitty"  # Setting terminal to "kitty"
 browser = "firefox-developer-edition"  # Setting browser to "Firefox Developer Edition"
 
 # Keybindings #
-
 keys = [
     Key([mod], "Return", lazy.spawn(term), desc="Launches default terminal"),
-    Key(
-        [mod],
-        "d",
-        lazy.spawn(
-            "rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi"
-        ),
-        desc="Launches rofi",
-    ),
+    Key([mod], "d", lazy.spawn("rofi -show drun -modi drun"), desc="Launches rofi"),
     Key([mod], "y", lazy.spawn("rofimoji -a copy"), desc="Launches rofimoji"),
     Key(
         [mod, "shift"],
         "p",
-        lazy.spawn(os.path.expanduser("~/.config/polybar/scripts/powermenu.sh")),
+        lazy.spawn(os.path.expanduser("~/.config/rofi/scripts/powermenu.sh")),
         desc="Rofi powermenu",
     ),
     Key(
@@ -273,9 +263,7 @@ screens = [
                     background=colors[6],
                     foreground=colors[0],
                     mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn(
-                            "rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi"
-                        )
+                        "Button1": lambda: qtile.cmd_spawn("rofi -show drun -modi drun")
                     },
                 ),
                 widget.TextBox(

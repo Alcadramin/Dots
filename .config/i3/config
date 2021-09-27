@@ -1,3 +1,11 @@
+##
+# Author: bw3u <berkcan@vivaldi.net>
+# Github: @bw3u
+# Gitlab: @bw3u
+# Reddit: @panlazy
+#
+# License: MIT
+
 #########     Configuration    #########
 ###           the easy stuff         ###
     font pango: mononoki Nerd Font
@@ -40,14 +48,6 @@
             # text: The text color of the title bar.
             # indicator: The color used to indicate where a new view will open. In a tiled container, this would paint the right border of the current view if a new view would be opened to the right.
             # child_border: The border around the view itself.
-        # The default colors are:
-            # class	        border	background	text    indicator	child_border			
-            # background	n/a	    #ffffff     n/a	    n/a	        n/a
-            # focused	    #4c7899	#285577	    #ffffff	#2e9ef4	    #285577
-            # focused_inactive	#333333	#5f676a	#ffffff	#484e50	    #5f676a
-            # unfocused	    #333333	#222222	    #888888	#292d2e	    #222222
-            # urgent	    #2f343a	#900000	    #ffffff	#900000	    #900000
-            # placeholder	#000000	#0c0c0c	    #ffffff	#000000 	#0c0c0c
         client.focused           #9aa5ce #364A82 #c0caf5 #9aa5ce   #9aa5ce
         client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
         client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
@@ -111,11 +111,11 @@
 ###         Menu for commands        ###
 
     # Program Launcher
-        bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
+        bindsym $mod+d exec rofi -show drun -modi drun
         bindsym $mod+y exec rofimoji --action copy
 
     # Power menu
-        bindsym $mod+P exec ~/.config/wofi/wofi-power.sh
+        bindsym $mod+P exec ~/.config/rofi/scripts/powermenu.sh
 
 #########    Key Bindindings   #########
 
@@ -296,16 +296,9 @@
     exec --no-startup-id picom &
     # exec --no-startup-id /usr/bin/emacs --daemon & - Using systemd instead of this, much easier to restart!
 
-# Arch update notifications
-   # exec --no-startup-id kalu &
-
 # NOTE: we are using autotiling based on window dimensions
 # See https://github.com/nwg-piotr/autotiling
     exec --no-startup-id autotiling &
-
-# start initial programs
-    #exec --no-startup-id ~/.config/i3/launchTerminals
-    #exec --no-startup-id ~/.config/i3/launchNemos
 
 # Finally start polybar
     exec_always ~/.config/polybar/launch.sh &
