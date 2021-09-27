@@ -1,10 +1,10 @@
 /*
- * Author	       : bw3u <berkcan@vivaldi.net>
- * Github	       : @bw3u
- * Gitlab	   	   : @bw3
- * Reddit	   	   : @panlazy   
+ * Author           : bw3u <berkcan@vivaldi.net>
+ * Github           : @bw3u
+ * Gitlab           : @bw3
+ * Reddit           : @panlazy
  * 
- * License	       : MIT
+ * License          : MIT
  */
 
 @import "colors.rasi"
@@ -12,20 +12,20 @@
 * {
     background-color:       @bg;
     text-color:             @fga;
-	font:				 	"Iosevka Nerd Font 10";
+    font:                   "Iosevka Nerd Font 10";
 }
 
 window {
-    width:      			320px;
-    padding:    			25px;
-    border:					0px 0px 4px 0px;
+    width:320px;
+    padding:                25px;
+    border:                 0px 0px 4px 0px;
     border-radius:          0px;
     border-color:           @ac;
-    location:               center;
+    location                :center;
     y-offset:               -2em;
 }
 
 entry {
-    expand: 				true;
-    text-color:				@ac;
+    expand:                 true;
+    text-color:             @ac;
 }
