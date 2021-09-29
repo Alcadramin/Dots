@@ -12,7 +12,15 @@
 import os
 import subprocess
 from libqtile import qtile
-from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
+from libqtile.config import (
+    Group,
+    KeyChord,
+    Key,
+    Match,
+    Screen,
+    EzClick as Click,
+    EzDrag as Drag,
+)
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
@@ -24,12 +32,12 @@ browser = "firefox-developer-edition"  # Setting browser to "Firefox Developer E
 # Keybindings #
 keys = [
     Key([mod], "Return", lazy.spawn(term), desc="Launches default terminal"),
-    Key([mod], "d", lazy.spawn("rofi -show drun -modi drun"), desc="Launches rofi"),
+    Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Launches rofi"),
     Key([mod], "y", lazy.spawn("rofimoji -a copy"), desc="Launches rofimoji"),
     Key(
         [mod, "shift"],
         "p",
-        lazy.spawn(os.path.expanduser("~/.config/rofi/scripts/powermenu.sh")),
+        lazy.spawn(os.path.expanduser("/home/bw3u/.config/rofi/scripts/powermenu.sh")),
         desc="Rofi powermenu",
     ),
     Key(
@@ -38,12 +46,12 @@ keys = [
         lazy.spawn("betterlockscreen -l"),
         desc="Lock screen",
     ),
-    # Key(
-    #    [mod],
-    #    "space",
-    #    lazy.widget["keyboardlayout"].next_keyboard(),
-    #    desc="Next keyboard layout.",
-    # ),
+    Key(
+        [mod, "control"],
+        "space",
+        lazy.widget["keyboardlayout"].next_keyboard(),
+        desc="Next kbd layout.",
+    ),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"), # Didn't configured the bar properly, looks like shit.
     # Qtile controls
     Key([mod], "Tab", lazy.next_layout(), desc="Switch layout"),
@@ -119,7 +127,8 @@ keys = [
         ],
     ),
     # Application keybindings
-    Key([mod, "shift"], "d", lazy.spawn("pcmanfm"), desc="Launch PCManFM"),
+    # Key([mod, "shift"], "d", lazy.spawn("pcmanfm"), desc="Launch PCManFM"),
+    Key([mod, "shift"], "d", lazy.spawn("thunar"), desc="Launch Thunar"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Screenshot"),
     # Media Keys
     Key(
@@ -217,8 +226,8 @@ colors = [
     ["#2e3340", "#2e3340"],  # 11
     ["#065f73", "#065f73"],  # 12
     ["#8a7a63", "#8a7a63"],  # 13
-    ["#beb090", "#beb090"],  # 14
-    ["#7cbf9e", "#7cbf9e"],  # 15
+    ["#A4947D", "#A4947D"],  # 14
+    ["#BDAD96", "#BDAD96"],  # 15
     ["#a2d9b1", "#a2d9b1"],  # 16
 ]
 
@@ -324,7 +333,7 @@ screens = [
                     background=colors[2],
                     foreground=colors[0],
                 ),
-                widget.Spacer(length=300),
+                widget.Spacer(length=200),
                 widget.TextBox(
                     text="\ue0be",
                     font="Inconsolata for powerline",
@@ -491,10 +500,27 @@ screens = [
                     fontsize="33",
                     padding=0,
                     background=colors[13],
+                    foreground=colors[14],
+                ),
+                widget.KeyboardLayout(
+                    fmt=" {} הּ ",
+                    font="Iosevka Nerd Font",
+                    configured_keyboards=["gb", "tr"],
+                    fontsize="14",
+                    padding=0,
+                    background=colors[14],
+                    foreground=colors[0],
+                ),
+                widget.TextBox(
+                    text="\ue0be",
+                    font="Inconsolata for powerline",
+                    fontsize="33",
+                    padding=0,
+                    background=colors[14],
                     foreground=colors[15],
                 ),
                 widget.TextBox(
-                    text="  ",
+                    text="   ",
                     font="Iosevka Nerd Font",
                     fontsize="14",
                     padding=0,
@@ -595,16 +621,9 @@ def switch_screens(qtile):
 
 # Mod + Mouse drag -> Floating
 mouse = [
-    Drag(
-        [mod],
-        "Button1",
-        lazy.window.set_position_floating(),
-        start=lazy.window.get_position(),
-    ),
-    Drag(
-        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
-    ),
-    Click([mod], "Button2", lazy.window.bring_to_front()),
+    Drag("M-1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag("M-3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click("M-2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
@@ -626,6 +645,7 @@ floating_layout = layout.Floating(
         Match(title="Qalculate!"),
         Match(wm_class="OBS"),
         Match(wm_class="MultiMC"),
+        Match(wm_class="Tilda"),
     ]
 )
 
