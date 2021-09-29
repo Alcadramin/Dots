@@ -123,7 +123,8 @@ keys = [
         ["control"],
         "e",
         [
-            Key([], "e", lazy.spawn("emacs"), desc="Launch Emacs"),
+            Key([], "e", lazy.spawn("emacsclient -c -a 'emacs'"), desc="Launch Emacsclient"),
+            Key([], "g", lazy.spawn("emacs"), desc="Launch Emacs in GUI mode")
         ],
     ),
     # Application keybindings
@@ -266,7 +267,8 @@ screens = [
                     background=colors[6],
                 ),
                 widget.TextBox(
-                    text="  ",
+                    #text="  ",
+                    text="  ",
                     font="Iosevka Nerd Font",
                     fontsize="18",
                     background=colors[6],
@@ -646,6 +648,7 @@ floating_layout = layout.Floating(
         Match(wm_class="OBS"),
         Match(wm_class="MultiMC"),
         Match(wm_class="Tilda"),
+        Match(wm_class="Steam"),
     ]
 )
 

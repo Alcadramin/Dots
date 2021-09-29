@@ -20,15 +20,15 @@
 
 ;; JetBrains Mono
 ;(setq doom-font
-;      (font-spec :family "JetBrainsMono Nerd Font" :size 14)
+;      (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'bold)
 ;      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 15)
 ;      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24))
 
 ;; Victor Mono
 (setq doom-font
-      (font-spec :family "Victor Mono" :size 14 :weight 'bold)
-      doom-variable-pitch-font (font-spec :family "Victor Mono" :size 15)
-      doom-big-font (font-spec :family "Victor Mono" :size 24))
+      (font-spec :family "VictorMono Nerd Font" :size 14 :weight 'bold)
+      doom-variable-pitch-font (font-spec :family "VictorMono Nerd Font" :size 15)
+      doom-big-font (font-spec :family "VictorMono Nerd Font" :size 24))
 
 
 (after! doom-themes
@@ -82,6 +82,9 @@
       (:prefix ("d". "treemacs")
        :desc "Treemacs mode" "d" 'treemacs))
 
+;; Enable rainbow mode
+(add-hook 'css-mode-hook #'rainbow-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;      CENTAUR-TABS
@@ -109,6 +112,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 (use-package dashboard
   :init        (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
@@ -125,6 +129,7 @@
                                 (bookmarks . "book"))))
 
 (setq doom-fallback-buffer "*dashboard*")
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))) ;; To run with emacs daemon.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
