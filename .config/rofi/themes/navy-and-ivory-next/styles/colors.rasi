@@ -1,0 +1,19 @@
+* {
+    // Powermenu colors
+    //background:                   #021b21ff;
+    background:                     #282a36ff;
+    background-alt:                 #065f73ff;
+    foreground:                     #e8dfd6ff;
+    border:               	    #CA8CA5ff;
+    border-alt:               	    #F0B2B3ff;
+    selected:               	    #EFD4B61a;
+    urgent:                         #DA4453FF;
+  
+    // Launcher colors
+    al:                             #00000000;
+    bg:                             #282a36ff;
+    se:                             #101010ff;
+    fg:                             #e8dfd6ff;
+    ac:                             #61778dff;
+    ac:                             #f6f6c9ff;
+}

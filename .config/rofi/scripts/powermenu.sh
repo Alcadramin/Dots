@@ -1,44 +1,99 @@
 #!/usr/bin/env bash
 
-##
-# Author: bw3u <berkcan@vivaldi.net>
-# Github: @bw3u
-# Gitlab: @bw3u
-# Reddit: @panlazy
+## 
+# Author           : Berkcan Ucan <berkcan@vivaldi.net> (bw3u)
+# Github           : @bw3u
+# Gitlab           : @bw3u
+# Reddit           : @panlazy
+# Original Author  : Aditya Shakya
 #
-# License: MIT
+# License          : MIT
 
-dir="~/.config/rofi/themes/navy-and-ivory"
+dir="$HOME/.config/rofi/themes/navy-and-ivory-next"
+
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme $dir/powermenu.rasi"
+rofi_command="rofi -theme $dir/powermenu"
 
 # Options
-shutdown="  Shutdown"
-reboot="  Restart"
-lock="  Lock"
-suspend="  Suspend"
-logout="  Logout"
+shutdown=""
+reboot=""
+lock=""
+suspend=""
+logout=""
+
+# Confirmation
+confirm_exit() {
+	rofi -dmenu\
+		-i\
+		-no-fixed-num-lines\
+		-p "Are You Sure? : "\
+		-theme $dir/confirm.rasi
+}
+
+# Message
+msg() {
+	rofi -theme "$dir/message.rasi" -e "Available Options  -  yes / y / no / n"
+}
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
-chosen="$(echo -e "$options" | $rofi_command -p "  Uptime: $uptime" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 2)"
 case $chosen in
-$shutdown)
-    systemctl poweroff
-    ;;
-$reboot)
-    systemctl reboot
-    ;;
-$lock)
-    betterlockscreen -l
-    ;;
-$suspend)
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
-    systemctl suspend
-    ;;
-$logout)
-    i3-msg exit
-    ;;
+    $shutdown)
+		ans=$(confirm_exit &)
+		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			systemctl poweroff
+		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+    $reboot)
+		ans=$(confirm_exit &)
+		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			systemctl reboot
+		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+    $lock)
+		if [[ -f /usr/bin/i3lock ]]; then
+			i3lock
+		elif [[ -f /usr/bin/betterlockscreen ]]; then
+			betterlockscreen -l
+		fi
+        ;;
+    $suspend)
+		ans=$(confirm_exit &)
+		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			mpc -q pause
+			amixer set Master mute
+			systemctl suspend
+		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+    $logout)
+		ans=$(confirm_exit &)
+		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
+				openbox --exit
+			elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
+				bspc quit
+			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
+				i3-msg exit
+			fi
+		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
 esac

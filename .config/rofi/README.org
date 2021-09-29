@@ -1,5 +1,7 @@
 #+TITLE: Rofi configuration
 
+ - Navy and Ivory is for *Rofi 1.5.4* won't work correctly with *Rofi >1.6.0* if you have latest version use *Navy and Ivory Next*.
+
 I've several themes here but mainly using *Navy and Ivory* one which you can check out in ~themes/~ folder. This theme has 3 modes:
  - drun
  - Emoji Selector ([[https://github.com/fdw/rofimoji][Rofimoji]])
