@@ -77,13 +77,21 @@
       (:prefix ("-" . "open file")
        :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/Org/agenda.org"))))
 
-;; Setting "SPC + d -> d" to enable treemacs-mode
+;; Setting "SPC + d -> t" to enable treemacs-mode
 (map! :leader
-      (:prefix ("d". "treemacs")
-       :desc "Treemacs mode" "d" 'treemacs))
+      (:prefix ("d". "Treemacs")
+       :desc "Treemacs mode" "t" 'treemacs))
 
 ;; Enable rainbow mode
 (add-hook 'css-mode-hook #'rainbow-mode)
+
+;; PDF Minor Mode
+(use-package pdf-view
+  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
+  :hook (pdf-tools-enabled . hide-mode-line-mode)
+  :config
+  (setq pdf-view-midnight-colors '("#eff0eb" . "#282a36")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
