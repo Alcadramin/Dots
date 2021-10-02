@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
-##
-# Author: bw3u <berkcan@vivaldi.net>
-# Github: @bw3u
-# Gitlab: @bw3u
-# Reddit: @panlazy
-#
-# License: MIT
+#=======================================#
+# Author: bw3u <berkcan@vivaldi.net>    #
+# Github: @bw3u                         #
+# Gitlab: @bw3u                         #
+# Reddit: @panlazy                      #
+#                                       #
+# License: MIT                          #
+#=======================================#
 
-# Imports #
+#==== Imports ====#
+
 import os
 import subprocess
 from libqtile import qtile
@@ -24,13 +26,16 @@ from libqtile.config import (
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
-# Defaults #
+#==== Defaults ====#
+
 mod = "mod4"  # Setting mod key to "SUPER"
 term = "kitty"  # Setting terminal to "kitty"
 browser = "firefox-developer-edition"  # Setting browser to "Firefox Developer Edition"
 
-# Keybindings #
+#==== Keybindings ====#
+
 keys = [
+    #=== Basics ===#
     Key([mod], "Return", lazy.spawn(term), desc="Launches default terminal"),
     Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Launches rofi"),
     Key([mod], "y", lazy.spawn("rofimoji -a copy"), desc="Launches rofimoji"),
@@ -53,12 +58,14 @@ keys = [
         desc="Next kbd layout.",
     ),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"), # Didn't configured the bar properly, looks like shit.
-    # Qtile controls
+
+    #=== Qtile controls ===#
     Key([mod], "Tab", lazy.next_layout(), desc="Switch layout"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill active window"),
     Key([mod, "shift"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "shift"], "e", lazy.shutdown(), desc="Quit qtile"),
-    # Workspace controls.
+
+    #=== Workspace controls ===#
     Key([mod], "j", lazy.layout.down(), desc="Move focus down in current stack pane"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up in current stack pane"),
     Key(
@@ -98,7 +105,8 @@ keys = [
     ),
     Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc="toggle floating"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="toggle fullscreen"),
-    ## Stack controls
+
+    #=== Stack controls ===#
     Key(
         [mod, "shift"],
         "Tab",
@@ -118,20 +126,28 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    # Emacs keybindings, CTRL+e -> 'key'.
+
+    #=== Emacs keybindings ===#
     KeyChord(
         ["control"],
         "e",
         [
-            Key([], "e", lazy.spawn("emacsclient -c -a 'emacs'"), desc="Launch Emacsclient"),
-            Key([], "g", lazy.spawn("emacs"), desc="Launch Emacs in GUI mode")
+            Key(
+                [],
+                "e",
+                lazy.spawn("emacsclient -c -a 'emacs'"),
+                desc="Launch Emacsclient",
+            ),
+            Key([], "g", lazy.spawn("emacs"), desc="Launch Emacs in GUI mode"),
         ],
     ),
-    # Application keybindings
+
+    #=== Application keybindings ===#
     # Key([mod, "shift"], "d", lazy.spawn("pcmanfm"), desc="Launch PCManFM"),
     Key([mod, "shift"], "d", lazy.spawn("thunar"), desc="Launch Thunar"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Screenshot"),
-    # Media Keys
+
+    #=== Media keybindings ===#
     Key(
         [],
         "XF86AudioRaiseVolume",
@@ -184,6 +200,7 @@ keys = [
     # ),
 ]
 
+#==== Workspaces and Layouts ====#
 
 groups = [
     Group("1", label="", spawn="firefox-developer-edition"),
@@ -210,11 +227,27 @@ for i in range(len(groups)):
         Key([mod, "shift"], str((i)), lazy.window.togroup(str(i), switch_group=True))
     )
 
-# Navy and Ivory based. (["main color", "2nd color, if diff will be gradient"])
+layout_theme = {
+    "border_width": 2,
+    "margin": 8,
+    "border_focus": "#e8dfD6",
+    "border_normal": "#021b21",
+}
+
+layouts = [
+    layout.MonadTall(**layout_theme),
+    layout.TreeTab(**layout_theme),
+    layout.Max(**layout_theme),
+    layout.Floating(**layout_theme),
+]
+
+#==== Colors ====#
+
+# Navy and Ivory - Snazzy based.
 colors = [
     ["#021b21", "#021b21"],  # 0
     ["#032c36", "#065f73"],  # 1
-    # ["#032c36", "#61778d"],# 1 this one is bit lighter
+    # ["#032c36", "#61778d"],# 1 this one is bit lighter, it is for inactive workspace icons.
     ["#e8dfd6", "#e8dfd6"],  # 2
     ["#c2454e", "#c2454e"],  # 3
     ["#44b5b1", "#44b5b1"],  # 4
@@ -232,23 +265,7 @@ colors = [
     ["#a2d9b1", "#a2d9b1"],  # 16
 ]
 
-layout_theme = {
-    "border_width": 2,
-    "margin": 8,
-    "border_focus": "#e8dfD6",
-    "border_normal": "#021b21",
-}
-
-layouts = [
-    layout.MonadTall(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.Stack(num_stacks=2),
-    layout.RatioTile(**layout_theme),
-    layout.Floating(**layout_theme),
-]
-
-
-# Widgets #
+#==== Widgets ====#
 
 widget_defaults = dict(
     font="Inconsolata for powerline",
@@ -257,338 +274,345 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+def top_bar():
+    return [
+        widget.Sep(
+            padding=6,
+            linewidth=0,
+            background=colors[6],
+        ),
+        widget.TextBox(
+            # text="  ",
+            text="  ",
+            font="Iosevka Nerd Font",
+            fontsize="18",
+            background=colors[6],
+            foreground=colors[0],
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn("rofi -show drun -modi drun")
+            },
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[6],
+            foreground=colors[0],
+        ),
+        widget.GroupBox(
+            font="Ubuntu Nerd Font",
+            fontsize=16,
+            margin_y=3,
+            margin_x=6,
+            padding_y=7,
+            padding_x=6,
+            borderwidth=4,
+            active=colors[8],
+            inactive=colors[1],
+            rounded=False,
+            highlight_color=colors[3],
+            highlight_method="block",
+            this_current_screen_border=colors[6],
+            block_highlight_text_color=colors[0],
+        ),
+        widget.Prompt(
+            background=colors[2],
+            foreground=colors[0],
+            font="Iosevka Nerd Font",
+            fontsize=18,
+        ),
+        widget.Chord(
+            chords_colors={
+                "launch": ("#ff0000", "#ffffff"),
+            },
+            name_transform=lambda name: name.upper(),
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize=33,
+            padding=0,
+            background=colors[0],
+            foreground=colors[2],
+        ),
+        widget.WindowName(
+            font="Iosevka Nerd Font",
+            fontsize=15,
+            background=colors[2],
+            foreground=colors[0],
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[2],
+            foreground=colors[0],
+        ),
+        widget.Spacer(length=200),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[0],
+            foreground=colors[10],
+        ),
+        widget.CurrentLayoutIcon(
+            custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
+            scale=0.45,
+            padding=0,
+            background=colors[10],
+            foreground=colors[2],
+            font="Iosevka Nerd Font",
+            fontsize=14,
+        ),
+        widget.CurrentLayout(
+            font="Iosevka Nerd Font",
+            fontsize=15,
+            background=colors[10],
+            foreground=colors[2],
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[10],
+            foreground=colors[11],
+        ),
+        widget.TextBox(
+            text=" ",
+            font="Iosevka Nerd Font",
+            fontsize=18,
+            padding=0,
+            background=colors[11],
+            foreground=colors[2],
+        ),
+        widget.DF(
+            fmt=" {}",
+            font="Iosevka Nerd Font",
+            fontsize=15,
+            partition="/home",
+            format="{uf}{m} ({r:.0f}%)",
+            visible_on_warn=False,
+            background=colors[11],
+            foreground=colors[2],
+            padding=5,
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")},
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[11],
+            foreground=colors[12],
+        ),
+        widget.TextBox(
+            text=" ",
+            font="Iosevka Nerd Font",
+            fontsize=16,
+            foreground=colors[2],
+            background=colors[12],
+            padding=0,
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")},
+        ),
+        widget.Memory(
+            background=colors[12],
+            foreground=colors[2],
+            font="Iosevka Nerd Font",
+            fontsize=15,
+            format="{MemUsed: .0f} MB",
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")},
+        ),
+        widget.Sep(
+            padding=8,
+            linewidth=0,
+            background=colors[12],
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[12],
+            foreground=colors[7],
+        ),
+        widget.Sep(
+            padding=6,
+            linewidth=0,
+            background=colors[7],
+        ),
+        widget.Systray(
+            background=colors[7],
+            foreground=colors[2],
+            icons_size=18,
+            padding=4,
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[7],
+            foreground=colors[13],
+        ),
+        widget.TextBox(
+            text="墳 ",
+            font="Iosevka Nerd Font",
+            fontsize=18,
+            background=colors[13],
+            foreground=colors[0],
+        ),
+        widget.Volume(
+            background=colors[13],
+            foreground=colors[0],
+            font="Iosevka Nerd Font",
+            fontsize=15,
+            mouse_callbacks={"Button3": lambda: qtile.cmd_spawn("kitty -e pulsemixer")},
+        ),
+        # Doesn't work with Spotify so its disabled!
+        # widget.TextBox(
+        #    text="\u2572",
+        #    font="Inconsolata for powerline",
+        #    fontsize="33",
+        #    padding=0,
+        #    background=colors[13],
+        #    foreground=colors[0],
+        # ),
+        # widget.Mpd2(
+        #   background=colors[13],
+        #   foreground=colors[0],
+        #   idle_message=" ",
+        #   idle_format="{idle_message} Not Playing",
+        #   status_format="  {artist}/{title} [{updating_db}]",
+        #   font="Iosevka Nerd Font",
+        #   fontsize=15,
+        # ),
+        # This one works with Spotify, enable if you want!
+        # widget.Mpris2(
+        #    background=colors[13],
+        #    foreground=colors[0],
+        #    name="spotify",
+        #    objname="org.mpris.MediaPlayer2.spotify",
+        #    fmt="\u2572   {}",
+        #    display_metadata=["xesam:title", "xesam:artist"],
+        #    scroll_chars=20,
+        #    font="Iosevka Nerd Font",
+        #    fontsize=15,
+        # ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[13],
+            foreground=colors[14],
+        ),
+        widget.KeyboardLayout(
+            fmt=" {} הּ ",
+            font="Iosevka Nerd Font",
+            configured_keyboards=["gb", "tr"],
+            fontsize="14",
+            padding=0,
+            background=colors[14],
+            foreground=colors[0],
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[14],
+            foreground=colors[15],
+        ),
+        widget.TextBox(
+            text="   ",
+            font="Iosevka Nerd Font",
+            fontsize="14",
+            padding=0,
+            background=colors[15],
+            foreground=colors[0],
+        ),
+        widget.Clock(
+            font="Iosevka Nerd Font",
+            foreground=colors[0],
+            background=colors[15],
+            fontsize=15,
+            format="%d %b, %A",
+        ),
+        widget.Sep(
+            padding=6,
+            linewidth=0,
+            background=colors[15],
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[15],
+            foreground=colors[16],
+        ),
+        widget.TextBox(
+            text=" ",
+            font="Iosevka Nerd Font",
+            fontsize="18",
+            padding=0,
+            background=colors[16],
+            foreground=colors[0],
+        ),
+        widget.Clock(
+            font="Iosevka Nerd Font",
+            foreground=colors[0],
+            background=colors[16],
+            fontsize=15,
+            format="%I:%M %p",
+        ),
+        widget.TextBox(
+            text="\ue0be",
+            font="Inconsolata for powerline",
+            fontsize="33",
+            padding=0,
+            background=colors[16],
+            foreground=colors[6],
+        ),
+        widget.Sep(
+            padding=6,
+            linewidth=0,
+            background=colors[6],
+        ),
+    ]
+
+
+# Spawn bar at multiple screens.
 screens = [
     Screen(
         top=bar.Bar(
-            [
-                widget.Sep(
-                    padding=6,
-                    linewidth=0,
-                    background=colors[6],
-                ),
-                widget.TextBox(
-                    #text="  ",
-                    text="  ",
-                    font="Iosevka Nerd Font",
-                    fontsize="18",
-                    background=colors[6],
-                    foreground=colors[0],
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn("rofi -show drun -modi drun")
-                    },
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[6],
-                    foreground=colors[0],
-                ),
-                widget.GroupBox(
-                    font="Ubuntu Nerd Font",
-                    fontsize=16,
-                    margin_y=3,
-                    margin_x=6,
-                    padding_y=7,
-                    padding_x=6,
-                    borderwidth=4,
-                    active=colors[8],
-                    inactive=colors[1],
-                    rounded=False,
-                    highlight_color=colors[3],
-                    highlight_method="block",
-                    this_current_screen_border=colors[6],
-                    block_highlight_text_color=colors[0],
-                ),
-                widget.Prompt(
-                    background=colors[2],
-                    foreground=colors[0],
-                    font="Iosevka Nerd Font",
-                    fontsize=18,
-                ),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize=33,
-                    padding=0,
-                    background=colors[0],
-                    foreground=colors[2],
-                ),
-                widget.WindowName(
-                    font="Iosevka Nerd Font",
-                    fontsize=15,
-                    background=colors[2],
-                    foreground=colors[0],
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[2],
-                    foreground=colors[0],
-                ),
-                widget.Spacer(length=200),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[0],
-                    foreground=colors[10],
-                ),
-                widget.CurrentLayoutIcon(
-                    custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
-                    scale=0.45,
-                    padding=0,
-                    background=colors[10],
-                    foreground=colors[2],
-                    font="Iosevka Nerd Font",
-                    fontsize=14,
-                ),
-                widget.CurrentLayout(
-                    font="Iosevka Nerd Font",
-                    fontsize=15,
-                    background=colors[10],
-                    foreground=colors[2],
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[10],
-                    foreground=colors[11],
-                ),
-                widget.TextBox(
-                    text=" ",
-                    font="Iosevka Nerd Font",
-                    fontsize=18,
-                    padding=0,
-                    background=colors[11],
-                    foreground=colors[2],
-                ),
-                widget.DF(
-                    fmt=" {}",
-                    font="Iosevka Nerd Font",
-                    fontsize=15,
-                    partition="/home",
-                    format="{uf}{m} ({r:.0f}%)",
-                    visible_on_warn=False,
-                    background=colors[11],
-                    foreground=colors[2],
-                    padding=5,
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")
-                    },
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[11],
-                    foreground=colors[12],
-                ),
-                widget.TextBox(
-                    text=" ",
-                    font="Iosevka Nerd Font",
-                    fontsize=16,
-                    foreground=colors[2],
-                    background=colors[12],
-                    padding=0,
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")
-                    },
-                ),
-                widget.Memory(
-                    background=colors[12],
-                    foreground=colors[2],
-                    font="Iosevka Nerd Font",
-                    fontsize=15,
-                    format="{MemUsed: .0f} MB",
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn("kitty -e bashtop")
-                    },
-                ),
-                widget.Sep(
-                    padding=8,
-                    linewidth=0,
-                    background=colors[12],
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[12],
-                    foreground=colors[7],
-                ),
-                widget.Sep(
-                    padding=6,
-                    linewidth=0,
-                    background=colors[7],
-                ),
-                widget.Systray(
-                    background=colors[7],
-                    foreground=colors[2],
-                    icons_size=18,
-                    padding=4,
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[7],
-                    foreground=colors[13],
-                ),
-                widget.TextBox(
-                    text="墳 ",
-                    font="Iosevka Nerd Font",
-                    fontsize=18,
-                    background=colors[13],
-                    foreground=colors[0],
-                ),
-                widget.Volume(
-                    background=colors[13],
-                    foreground=colors[0],
-                    font="Iosevka Nerd Font",
-                    fontsize=15,
-                    mouse_callbacks={
-                        "Button3": lambda: qtile.cmd_spawn("kitty -e pulsemixer")
-                    },
-                ),
-                # Doesn't work with Spotify so its disabled!
-                # widget.TextBox(
-                #    text="\u2572",
-                #    font="Inconsolata for powerline",
-                #    fontsize="33",
-                #    padding=0,
-                #    background=colors[13],
-                #    foreground=colors[0],
-                # ),
-                # widget.Mpd2(
-                #   background=colors[13],
-                #   foreground=colors[0],
-                #   idle_message=" ",
-                #   idle_format="{idle_message} Not Playing",
-                #   status_format="  {artist}/{title} [{updating_db}]",
-                #   font="Iosevka Nerd Font",
-                #   fontsize=15,
-                # ),
-                # This one works with Spotify, enable if you want!
-                # widget.Mpris2(
-                #    background=colors[13],
-                #    foreground=colors[0],
-                #    name="spotify",
-                #    objname="org.mpris.MediaPlayer2.spotify",
-                #    fmt="\u2572   {}",
-                #    display_metadata=["xesam:title", "xesam:artist"],
-                #    scroll_chars=20,
-                #    font="Iosevka Nerd Font",
-                #    fontsize=15,
-                # ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[13],
-                    foreground=colors[14],
-                ),
-                widget.KeyboardLayout(
-                    fmt=" {} הּ ",
-                    font="Iosevka Nerd Font",
-                    configured_keyboards=["gb", "tr"],
-                    fontsize="14",
-                    padding=0,
-                    background=colors[14],
-                    foreground=colors[0],
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[14],
-                    foreground=colors[15],
-                ),
-                widget.TextBox(
-                    text="   ",
-                    font="Iosevka Nerd Font",
-                    fontsize="14",
-                    padding=0,
-                    background=colors[15],
-                    foreground=colors[0],
-                ),
-                widget.Clock(
-                    font="Iosevka Nerd Font",
-                    foreground=colors[0],
-                    background=colors[15],
-                    fontsize=15,
-                    format="%d %b, %A",
-                ),
-                widget.Sep(
-                    padding=6,
-                    linewidth=0,
-                    background=colors[15],
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[15],
-                    foreground=colors[16],
-                ),
-                widget.TextBox(
-                    text=" ",
-                    font="Iosevka Nerd Font",
-                    fontsize="18",
-                    padding=0,
-                    background=colors[16],
-                    foreground=colors[0],
-                ),
-                widget.Clock(
-                    font="Iosevka Nerd Font",
-                    foreground=colors[0],
-                    background=colors[16],
-                    fontsize=15,
-                    format="%I:%M %p",
-                ),
-                widget.TextBox(
-                    text="\ue0be",
-                    font="Inconsolata for powerline",
-                    fontsize="33",
-                    padding=0,
-                    background=colors[16],
-                    foreground=colors[6],
-                ),
-                widget.Sep(
-                    padding=6,
-                    linewidth=0,
-                    background=colors[6],
-                ),
-            ],
-            28,
+            top_bar(),
+            size=28,
             opacity=0.95,
             background=colors[0],
             margin=[8, 8, 0, 8],
         ),
-        # left=bar.Gap(5),
-        # right=bar.Gap(5),
+    ),
+    Screen(
+        top=bar.Bar(
+            top_bar(),
+            size=28,
+            opacity=0.95,
+            background=colors[0],
+            margin=[8, 8, 0, 8],
+        ),
     ),
 ]
 
-# Helper functions #
+#==== Helper functions ====#
+
+
 def window_to_prev_group(qtile):
     if qtile.currentWindow is not None:
         i = qtile.groups.index(qtile.currentGroup)
@@ -622,6 +646,7 @@ def switch_screens(qtile):
 
 
 # Mod + Mouse drag -> Floating
+
 mouse = [
     Drag("M-1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag("M-3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
@@ -639,9 +664,6 @@ focus_on_window_activation = "smart"
 
 floating_layout = layout.Floating(
     float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        # default_float_rules include: utility, notification, toolbar, splash, dialog,
-        # file_progress, confirm, download and error.
         *layout.Floating.default_float_rules,
         Match(title="Confirmation"),
         Match(title="Qalculate!"),
@@ -651,6 +673,13 @@ floating_layout = layout.Floating(
         Match(wm_class="Steam"),
     ]
 )
+
+
+@hook.subscribe.client_new
+def dialogs(window):
+    """Floating dialog"""
+    if window.window.get_wm_type() == "dialog" or window.window.get_wm_transient_for():
+        window.floating = True
 
 
 @hook.subscribe.startup_once
