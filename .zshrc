@@ -2,25 +2,22 @@ export ZSH="/home/bw3u/.oh-my-zsh"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export JAVA_HOME="/usr/lib/jvm/java-11-amazon-corretto"
+export PAGER="most"
+export JAVA_HOME="/usr/lib/jvm/default/bin/"
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
-export DEBFULLNAME="Berkcan Ucan"
-export DEBEMAIL="berkcan@vivaldi.net"
 export NVM_SYMLINK_CURRENT=true
+export CHROME_EXECUTABLE="/usr/bin/chromium"
 
 ZSH_THEME="bw3u"
-plugins=(git
-				history
-				command-not-found
-				zsh-nvm
-				emacs
-				#zsh-interactive-cd
-				zsh-autosuggestions
-				#helpers
-				#colors
-				#pr-node
-				)
+plugins=(
+    git 
+    history
+    command-not-found
+    zsh-nvm
+	emacs
+	zsh-autosuggestions
+	)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,14 +49,18 @@ ex ()
 }
 
 ### PATH ###
+export SPICETIFY_INSTALL="$HOME/spicetify-cli"
 export PATH="$PATH":"$HOME/.local/bin"
 export PATH="$PATH":"$HOME/.emacs.d/bin"
 export PATH="$PATH":"$HOME/.android/sdk/platform-tools"
 export PATH="$PATH":"$HOME/.android/sdk/tools"
 export PATH="$PATH":"$HOME/.android/sdk"
-export GOPATH=$HOME/dev/go
+export PATH="$SPICETIFY_INSTALL:$PATH"
 export ANDROID_SDK_ROOT=$HOME/.android/sdk
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/dev/go
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ### MY ALIASES ###
 alias vim="nvim"
@@ -87,6 +88,9 @@ alias signpkg="debsign -k'AB7F BC1E DB97 9025 26A8  C2EA DDCE 2848 B6CE EE0B'"
 alias chpkg="sudo chown -R bw3u:bw3u"
 alias uploadpkg="dput ppa:bw3u/focal"
 alias kubectl='microk8s kubectl'
+alias composer="php7 /usr/bin/composer" # To run composer with php74
+alias php="php7"
+alias ssh="kitty +kitten ssh"
 
 # Git
 alias gaa="git add ."
@@ -94,18 +98,12 @@ alias gcm="git commit -m"
 alias gca="git commit --amend --no-edit"
 alias gst="git status"
 alias gps="git push -u origin main"
+alias gtc="git rev-list --all --count"
 
 colorscript --random
 
 #[ -f $HOME/.miniconda3/etc/profile.d/conda.sh ] && source $HOME/.miniconda3/etc/profile.d/conda.sh
 [ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
-
-# It's pretty neat but slows down zsh. https://starship.rs
-# eval "$(starship init zsh)"
-
-# NVM stuff
-#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc'; fi
