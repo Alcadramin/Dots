@@ -1,9 +1,9 @@
 [init]
 	defaultBranch = main
 [user]
-	email = berkcan@vivaldi.net
+	email = hello@berkcan.me
 	name = Berkcan Uçan
-	signingKey = DDCE2848B6CEEE0B
+	signingKey = 298255D05279ABBE
 [credential]
 	helper = cache --timeout=3600
 [commit]

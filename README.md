@@ -3,7 +3,7 @@
 | ![qtile](https://i.imgur.com/eb0QhIj.png) |
 
 #
-### 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/gitlab/stars/bw3u/dotfiles"/>
+### 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/github/stars/alcadramin/dots"/>
 
 <a href="https://i.imgur.com/15nq6HJ.png">
   <img src="https://i.imgur.com/15nq6HJ.png" alt="i3" align="right" width="400px"/>
@@ -23,7 +23,7 @@ Details of my setup..
 - **GUI & CLI IDE/Text Editor**    • [Kakoune](https://kakoune.org/), [Neovim](https://neovim.io/) and the big boy [Doom Emacs](https://github.com/hlissner/doom-emacs) 😈
 
 #
-### How to install? <img alt="" align="right" src="https://flat.badgen.net/gitlab/issues/bw3u/dotfiles"/>
+### How to install? <img alt="" align="right" src="https://flat.badgen.net/github/issues/alcadramin/dots"/>
 
 <a href="https://i.imgur.com/mZO9Jg8.png">
   <img src="https://i.imgur.com/mZO9Jg8.png" alt="emacs" align="right" width="400px"/>
@@ -35,21 +35,6 @@ I casually distro hopping and I need a quick solution so..
 - If it's not, unfortunately you have to install these applications by hand and manually copy the files to your home directory.
 
 * My configurations are heavily depends on [Nerd Fonts](https://www.nerdfonts.com/) please install all of them in advance, or you will see weird fonts 😓
-
-#
-### [`setup.sh`](setup.sh) is capable of: ✨
-
-**!!THIS SCRIPT IS OUTDATED USE WITH CAUTION!!**
-
-- [x] Automatically detect your package manager and your OS.
-- [x] Copy dotfiles to your home directory.
-- [x] Install dependencies.
-- [x] Install **Window Manager** after your choice (will prompt you a dialog).
-- [x] Install **Terminal Emulator** after your choice (will prompt you a dialog).
-- [ ] Install **Text Editor** after your choice. <kbd>not yet</kbd>
-- [ ] Install and setup **zsh** & **oh-my-zsh**. <kbd>not yet</kbd>
-
-If you have something in your mind and/or don't know shell scripting. Open an issue i'll take a look.
 
 #
 ### License <img alt="" align="right" src="https://flat.badgen.net/badge/license/MIT/blue"/>
