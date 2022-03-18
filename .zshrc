@@ -1,4 +1,4 @@
-export ZSH="/home/bw3u/.oh-my-zsh"
+export ZSH="/home/alcadramin/.oh-my-zsh"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -9,7 +9,7 @@ export NVM_COMPLETION=true
 export NVM_SYMLINK_CURRENT=true
 export CHROME_EXECUTABLE="/usr/bin/chromium"
 
-ZSH_THEME="bw3u"
+ZSH_THEME="alcadramin"
 plugins=(
     git 
     history
@@ -85,8 +85,8 @@ alias df='df -h'
 alias free='free -m'
 alias buildpkg="debuild -us -uc -i -k'DDCE2848B6CEEE0B' -S"
 alias signpkg="debsign -k'AB7F BC1E DB97 9025 26A8  C2EA DDCE 2848 B6CE EE0B'"
-alias chpkg="sudo chown -R bw3u:bw3u"
-alias uploadpkg="dput ppa:bw3u/focal"
+alias chpkg="sudo chown -R alcadramin:alcadramin"
+alias uploadpkg="dput ppa:alcadramin/focal"
 alias kubectl='microk8s kubectl'
 alias composer="php7 /usr/bin/composer" # To run composer with php74
 alias php="php7"
@@ -106,9 +106,9 @@ colorscript --random
 [ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/home/bw3u/.local/lib/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/home/alcadramin/.local/lib/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/bw3u/.local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/bw3u/.local/lib/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc'; fi
 
 export CUDA_HOME=/usr/local/cuda

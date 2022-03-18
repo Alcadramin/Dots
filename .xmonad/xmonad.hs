@@ -1,8 +1,8 @@
 {-
- - Copyright 2021 - Berkcan Ucan <berkcan@vivaldi.net> (bw3u)
+ - Copyright 2021 - Berkcan Ucan <hello@berkcan.me> (alcadramin)
  - All colors based on Dracula Theme.
  -
- - https://gitlab.com/bw3u/dotfiles
+ - https://gitlab.com/alcadramin/dotfiles
  -}
 
  -- Base

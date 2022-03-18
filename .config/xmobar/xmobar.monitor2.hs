@@ -13,7 +13,7 @@ Config
     iconOffset = -1,
     allDesktops = True,
     persistent = True,
-    iconRoot = "/home/bw3u/.xmonad/xpm/",
+    iconRoot = "/home/alcadramin/.xmonad/xpm/",
     commands =
       [ Run UnsafeStdinReader,
         Run Date "<fn=2>\xf017 </fn>  %b %d %Y - (%H:%M) " "date" 50,
@@ -22,10 +22,10 @@ Config
         Run Memory ["-t", "<fn=2>\xf233 </fn>  mem: <used>M (<usedratio>%)"] 20,
         Run DiskU [("/", "<fn=2>\xf0c7 </fn>  hdd: <free> free")] [] 60,
         Run Com "uname" ["-r"] "" 3600,
-        Run Com "/home/bw3u/.local/bin/battery.sh" [""] "bat" 50,
-        Run Com "/home/bw3u/.local/bin/layout.sh" [""] "layout" 50,
-        Run Com "/home/bw3u/.local/bin/trayerpad.sh" [] "trayerpad" 20,
-        Run Com "/home/bw3u/.local/bin/debupdate.sh" [] "debupdate" 36000,
+        Run Com "/home/alcadramin/.local/bin/battery.sh" [""] "bat" 50,
+        Run Com "/home/alcadramin/.local/bin/layout.sh" [""] "layout" 50,
+        Run Com "/home/alcadramin/.local/bin/trayerpad.sh" [] "trayerpad" 20,
+        Run Com "/home/alcadramin/.local/bin/debupdate.sh" [] "debupdate" 36000,
         Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
       ],
     sepChar = "%",

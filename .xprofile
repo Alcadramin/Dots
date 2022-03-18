@@ -1,3 +1,3 @@
-sh -c /home/bw3u/.config/xrandr.sh
+sh -c /home/alcadramin/.config/xrandr.sh
 xsetroot -cursor_name left_ptr
 export $(gnome-keyring-daemon -s)

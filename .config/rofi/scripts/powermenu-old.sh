@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 ##
-# Author: bw3u <berkcan@vivaldi.net>
-# Github: @bw3u
-# Gitlab: @bw3u
+# Author: alcadramin <hello@berkcan.me>
+# Github: @alcadramin
+# Gitlab: @alcadramin
 # Reddit: @panlazy
 #
 # License: MIT

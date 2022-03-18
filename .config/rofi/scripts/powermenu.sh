@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 ## 
-# Author           : Berkcan Ucan <berkcan@vivaldi.net> (bw3u)
-# Github           : @bw3u
-# Gitlab           : @bw3u
+# Author           : Berkcan Ucan <hello@berkcan.me> (alcadramin)
+# Github           : @alcadramin
+# Gitlab           : @alcadramin
 # Reddit           : @panlazy
 # Original Author  : Aditya Shakya
 #

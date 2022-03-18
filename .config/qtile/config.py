@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 #=======================================#
-# Author: bw3u <berkcan@vivaldi.net>    #
-# Github: @bw3u                         #
-# Gitlab: @bw3u                         #
+# Author: alcadramin <hello@berkcan.me>    #
+# Github: @alcadramin                         #
+# Gitlab: @alcadramin                         #
 # Reddit: @panlazy                      #
 #                                       #
 # License: MIT                          #
@@ -42,7 +42,7 @@ keys = [
     Key(
         [mod, "shift"],
         "p",
-        lazy.spawn(os.path.expanduser("/home/bw3u/.config/rofi/scripts/powermenu.sh")),
+        lazy.spawn(os.path.expanduser("/home/alcadramin/.config/rofi/scripts/powermenu.sh")),
         desc="Rofi powermenu",
     ),
     Key(

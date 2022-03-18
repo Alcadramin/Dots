@@ -1,8 +1,8 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;;
-;; Author       : Berkcan Ucan <berkcan@vivaldi.net> (bw3u)
-;; Gitlab       : @bw3u
-;; Github       : @bw3u
+;; Author       : Berkcan Ucan <hello@berkcan.me> (alcadramin)
+;; Gitlab       : @alcadramin
+;; Github       : @alcadramin
 ;;
 ;; Licensed under the MIT License (MIT).
 ;;;
@@ -14,7 +14,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq user-full-name "Berkcan Ucan"
-      user-mail-address "berkcan@vivaldi.net")
+      user-mail-address "hello@berkcan.me")
 
 (setq doom-theme 'doom-snazzy)
 
@@ -125,7 +125,7 @@
   :init        (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Doom Emacs")
-  (setq dashboard-startup-banner "/home/bw3u/.doom.d/black_hole.png")
+  (setq dashboard-startup-banner "/home/alcadramin/.doom.d/black_hole.png")
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
                           (bookmarks . 5)

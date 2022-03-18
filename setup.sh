@@ -6,7 +6,7 @@ color=$(tput setaf 3)
 normal=$(tput sgr0)
 arrow="${color}${bold}=>${normal}"
 function _help() {
-  echo "Berkcan Ucan (bw3u) <berkcan@vivaldi.net>"
+  echo "Berkcan Ucan (alcadramin) <hello@berkcan.me>"
   echo "${bold}Description:${normal} This script will help you to setup your environment and load dotfiles as well as create a backup."
   echo ""
   echo "${bold}USAGE: ${normal}"
@@ -71,10 +71,10 @@ function withParu() {
 
   rsync -avxRHAXP .oh-my-zsh/ .config/picom/ .zshrc .Xresources ~/
 
-  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? (yes/no)"
-  read bw3u
+  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}alcadramin${normal}? (yes/no)"
+  read alcadramin
 
-  if [[ $bw3u == "yes" || $bw3u == "y" ]]; then
+  if [[ $alcadramin == "yes" || $alcadramin == "y" ]]; then
     echo "${arrow} Copying personal stuff.."
     rsync -avxRHAXP .gitconfig .xprofile .config/xrandr.sh .profile ~/
   fi
@@ -115,10 +115,10 @@ function withYay() {
 
   rsync -avxRHAXP .oh-my-zsh/ .config/picom/ .zshrc .Xresources ~/
 
-  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? (yes/no)"
-  read bw3u
+  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}alcadramin${normal}? (yes/no)"
+  read alcadramin
 
-  if [[ $bw3u == "yes" || $bw3u == "y" ]]; then
+  if [[ $alcadramin == "yes" || $alcadramin == "y" ]]; then
     echo "${arrow} Copying personal stuff.."
     rsync -avxRHAXP .gitconfig .xprofile .config/xrandr.sh .profile ~/
   fi
@@ -159,10 +159,10 @@ function withApt() {
 
   rsync -avxRHAXP .oh-my-zsh/ .config/picom/ .zshrc .Xresources ~/
 
-  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}bw3u${normal}? (yes/no)"
-  read bw3u
+  echo "${arrow} Let's check if I am running the script, will copy personal stuff (gitconfig etc.). Are you ${bold}alcadramin${normal}? (yes/no)"
+  read alcadramin
 
-  if [[ $bw3u == "yes" || $bw3u == "y" ]]; then
+  if [[ $alcadramin == "yes" || $alcadramin == "y" ]]; then
     echo "${arrow} Copying personal stuff.."
     rsync -avxRHAXP .gitconfig .xprofile .config/xrandr.sh .profile ~/
   fi
