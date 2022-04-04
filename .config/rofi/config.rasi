@@ -1,5 +1,7 @@
 configuration {
-  show-icons:         true;
-  icon-theme:         "Papirus-Breeze";
-  theme: "/home/alcadramin/.config/rofi/themes/navy-and-ivory-next/launcher.rasi";
+  show-icons: true;
+  icon-theme: "Papirus-Breeze-Custom";
 }
+
+@theme "/home/alcadramin/.config/rofi/launchers/style.rasi"
+
