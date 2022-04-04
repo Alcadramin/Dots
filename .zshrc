@@ -3,20 +3,19 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PAGER="most"
-export JAVA_HOME="/usr/lib/jvm/default/bin/"
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 export NVM_SYMLINK_CURRENT=true
 export CHROME_EXECUTABLE="/usr/bin/chromium"
 
-ZSH_THEME="alcadramin"
+ZSH_THEME="afowler"
 plugins=(
     git 
     history
     command-not-found
     zsh-nvm
-	emacs
-	zsh-autosuggestions
+	  emacs
+	  zsh-autosuggestions
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -43,12 +42,16 @@ ex ()
       *.tar.zst)   unzstd $1    ;;      
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
-  else
+  els
     echo "'$1' is not a valid file"
   fi
 }
 
 ### PATH ###
+export ANDROID_SDK_ROOT=$HOME/.android/sdk
+export CUDA_HOME=/usr/local/cuda
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/dev/go
 export SPICETIFY_INSTALL="$HOME/spicetify-cli"
 export PATH="$PATH":"$HOME/.local/bin"
 export PATH="$PATH":"$HOME/.emacs.d/bin"
@@ -56,11 +59,20 @@ export PATH="$PATH":"$HOME/.android/sdk/platform-tools"
 export PATH="$PATH":"$HOME/.android/sdk/tools"
 export PATH="$PATH":"$HOME/.android/sdk"
 export PATH="$SPICETIFY_INSTALL:$PATH"
-export ANDROID_SDK_ROOT=$HOME/.android/sdk
-export GOROOT=/usr/lib/go
-export GOPATH=$HOME/dev/go
-export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/gems/ruby-3.1.1/bin"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
+
+#[ -f $HOME/.miniconda3/etc/profile.d/conda.sh ] && source $HOME/.miniconda3/etc/profile.d/conda.sh
+[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/home/alcadramin/.local/lib/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc'; fi
+
 
 ### MY ALIASES ###
 alias vim="nvim"
@@ -83,11 +95,6 @@ alias fgrep='fgrep --color=auto'
 alias jctl="journalctl -p 3 -xb"
 alias df='df -h'
 alias free='free -m'
-alias buildpkg="debuild -us -uc -i -k'DDCE2848B6CEEE0B' -S"
-alias signpkg="debsign -k'AB7F BC1E DB97 9025 26A8  C2EA DDCE 2848 B6CE EE0B'"
-alias chpkg="sudo chown -R alcadramin:alcadramin"
-alias uploadpkg="dput ppa:alcadramin/focal"
-alias kubectl='microk8s kubectl'
 alias composer="php7 /usr/bin/composer" # To run composer with php74
 alias php="php7"
 alias ssh="kitty +kitten ssh"
@@ -102,13 +109,3 @@ alias gtc="git rev-list --all --count"
 
 colorscript --random
 
-#[ -f $HOME/.miniconda3/etc/profile.d/conda.sh ] && source $HOME/.miniconda3/etc/profile.d/conda.sh
-[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/home/alcadramin/.local/lib/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc'; fi
-
-export CUDA_HOME=/usr/local/cuda
