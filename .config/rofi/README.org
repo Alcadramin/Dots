@@ -1,6 +1,6 @@
 #+TITLE: Rofi configuration
 
-**I've completely updated my configuration disregard this README.** You can find old configrations at [[https://github.com/Alcadramin/Dots/tree/main/.config/rofi/DEPRECATED]]
+*I've completely updated my configuration disregard this README.* You can find old configrations at [[https://github.com/Alcadramin/Dots/tree/main/.config/rofi/DEPRECATED]]
 
  - Navy and Ivory is for *Rofi 1.5.4* won't work correctly with *Rofi >1.6.0* if you have latest version use *Navy and Ivory Next*.
 
