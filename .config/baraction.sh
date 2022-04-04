@@ -42,6 +42,17 @@ wifi(){
     echo -e "$wifi"
 }
 
+# INTERNET CONNECTION
+net() {
+  if cat /sys/class/net/enp3s0/operstate | grep -q 'up'; then
+    echo "ﯱ Online - enp3s0"
+  elif cat /sys/class/net/wlp2s0/operstate | grep -q 'up'; then
+    echo " Online - wlp2s0"
+  else
+    echo " Offline"
+  fi
+}
+
 ## KEYBOARD LAYOUT
 layout(){
     layout=`setxkbmap -query | grep layout | awk '{print $2}'`
@@ -51,6 +62,6 @@ layout(){
 SLEEP_SEC=0.5
 while :; do
     #echo "+@fg=5; $(kernel)+@fg=0; | +@fg=6; $(cpu)+@fg=0; | +@fg=2;  $(mem)+@fg=0; | +@fg=3; $(hdd)+@fg=0; | +@fg=4; $(vol)+@fg=0; | +@fg=6;  $(wifi)+@fg=0; | +@fg=2; $(layout)+@fg=0; | +@fg=5;"
-    echo "+@fg=5; $(kernel)+@fg=0; | +@fg=6; $(cpu)+@fg=0; | +@fg=2;  $(mem)+@fg=0; | +@fg=4; $(vol)+@fg=0; | +@fg=6;  $(wifi)+@fg=0; | +@fg=2; $(layout)+@fg=0; | +@fg=5;"
+    echo "+@fg=5; $(kernel)+@fg=0; | +@fg=6; $(cpu)+@fg=0; | +@fg=2;  $(mem)+@fg=0; | +@fg=4; $(vol)+@fg=0; | +@fg=6;$(net)+@fg=0; | +@fg=2; $(layout)+@fg=0; | +@fg=5;"
 	sleep $SLEEP_SEC
 done
