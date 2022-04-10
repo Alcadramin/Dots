@@ -1,10 +1,4 @@
-| 🎨 Qtile                                  |
-| ----------------------------------------- |
-| ![qtile](https://i.imgur.com/eb0QhIj.png) |
-
-#
-
-### 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/github/stars/alcadramin/dots"/>
+## 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/github/stars/alcadramin/dots"/>
 
 <a href="https://i.imgur.com/15nq6HJ.png">
   <img src="https://i.imgur.com/15nq6HJ.png" alt="i3" align="right" width="400px"/>
@@ -24,7 +18,6 @@ Details of my setup..
 - **GUI & CLI IDE/Text Editor** • [Neovim](https://neovim.io/), [Kakoune](https://kakoune.org/) and [Doom Emacs](https://github.com/hlissner/doom-emacs) 😈
 
 #
-
 ### How to install? <img alt="" align="right" src="https://flat.badgen.net/github/issues/alcadramin/dots"/>
 
 <a href="https://i.imgur.com/mZO9Jg8.png">
@@ -38,7 +31,20 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 - For blur and rounded corners use Picom^9.1 with `--experimental-backends` flag.
 
 #
+### Screenshots
 
+| 🎨 Qtile                                  |
+| ----------------------------------------- |
+| ![qtile](https://i.imgur.com/eb0QhIj.png) |
+
+<br />
+
+| 🎨 Spectrwm                                  |
+| -------------------------------------------- |
+| ![spectrwm](https://i.imgur.com/FKV4wyn.jpg) |
+
+#
 ### License <img alt="" align="right" src="https://flat.badgen.net/badge/license/MIT/blue"/>
 
 - The files and scripts in this repository are licensed under the [MIT](LICENSE.md) License.
+
