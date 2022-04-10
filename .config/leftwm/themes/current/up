@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+# Down the last running theme
+if [ -f "/tmp/leftwm-theme-down" ]; then
+    /tmp/leftwm-theme-down
+    rm /tmp/leftwm-theme-down
+fi
+ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
+
+
+# Set the theme.toml config
+leftwm-command "LoadTheme $SCRIPTPATH/theme.toml"
+
+# Boot lemonbar and pipe the status of left into it
+sizes=( $(leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d') )
+
+index=0
+for size in "${sizes[@]}"
+do
+   leftwm-state -w $index -t $SCRIPTPATH/template.liquid | lemonbar -g $size -F#FFFFFFFF -B#AA222222&
+   let index=index+1
+done
+
+# Start my apps
+nitrogen --restore
+picom -b --experimental-backends
+xfce4-power-manager
+numlockx on
+/usr/libexec/polkit-gnome-authentication-agent-1 &
+/usr/libexec/xfce4/notifyd/xfce4-notifyd &
+/usr/bin/sh -c /home/alcadramin/.config/xrandr.sh
+
