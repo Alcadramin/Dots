@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 #=======================================#
-# Author: alcadramin <hello@alca.dev>    #
-# Github: @alcadramin                         #
-# Gitlab: @alcadramin                         #
+# Author: alcadramin <hello@alca.dev>   #
+# Github: @alcadramin                   #
+# Gitlab: @alcadramin                   #
 # Reddit: @panlazy                      #
 #                                       #
 # License: MIT                          #
