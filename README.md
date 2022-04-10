@@ -41,7 +41,7 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 
 | 🎨 Spectrwm                                  |
 | -------------------------------------------- |
-| ![spectrwm](https://i.imgur.com/FKV4wyn.jpg) |
+| ![spectrwm](https://i.imgur.com/mJf2qoj.jpg) |
 
 #
 ### License <img alt="" align="right" src="https://flat.badgen.net/badge/license/MIT/blue"/>

@@ -7,12 +7,18 @@ filetype off                  " required
 call plug#begin()
 
 " Visuals "
-  Plug 'itchyny/lightline.vim'
+  "Plug 'itchyny/lightline.vim'
+  "Plug 'nvim-lualine/lualine.nvim'
+  Plug 'vim-airline/vim-airline'
   Plug 'frazrepo/vim-rainbow'
   Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'GlennLeo/cobalt2'
+  Plug 'tjdevries/colorbuddy.nvim'
+  Plug 'lalitmee/cobalt2.nvim'
   Plug 'glepnir/dashboard-nvim'
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/limelight.vim'
+  Plug 'Rigellute/rigel'
   Plug 'junegunn/vim-emoji'
 
 " File Management "
@@ -22,11 +28,12 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'ryanoasis/vim-devicons'
-  
+  Plug 'kyazdani42/nvim-web-devicons' 
+
 " Language Specific "
+  "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
   Plug 'vim-python/python-syntax'
   Plug 'ap/vim-css-color'
-  "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
@@ -39,7 +46,10 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme & Customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme dracula
+"colorscheme dracula
+colorscheme cobalt2
+"lua require('colorbuddy').colorscheme('cobalt2')
+
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 highlight Comment cterm=italic
@@ -62,7 +72,7 @@ set clipboard=unnamedplus         " Copy/paste between vim and other programs.
 syntax enable
 let g:rehash256 = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""" """""""""""""""""
 " => Remap Keys
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap ESC to ii
@@ -96,15 +106,22 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " => Status Line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The lightline.vim theme 
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'one',
+"       \ }
 
 " Always show statusline
-set laststatus=2
+" set laststatus=2
 
 " Uncomment to prevent non-normal modes showing in powerline and below powerline.
-set noshowmode
+" set noshowmode
+
+" Lualine
+" lua require('lualine').setup()
+
+let g:airline#extensions#tabline#enabled = 1
+let g:rigel_airline = 1
+let g:airline_theme = 'rigel'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -225,4 +242,3 @@ let g:coc_global_extensions = [
       \'coc-eslint',
       \'coc-prettier',
       \]
-
