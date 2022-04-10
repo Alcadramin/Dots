@@ -1,6 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;;
-;; Author       : Berkcan Ucan <hello@berkcan.me> (alcadramin)
+;; Author       : Berkcan Ucan <hello@alca.dev> (alcadramin)
 ;; Gitlab       : @alcadramin
 ;; Github       : @alcadramin
 ;;
@@ -14,7 +14,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq user-full-name "Berkcan Ucan"
-      user-mail-address "hello@berkcan.me")
+      user-mail-address "hello@alca.dev")
 
 (setq doom-theme 'doom-snazzy)
 

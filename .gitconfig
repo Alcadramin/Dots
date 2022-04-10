@@ -1,7 +1,7 @@
 [init]
 	defaultBranch = main
 [user]
-	email = hello@berkcan.me
+	email = hello@alca.dev
 	name = Berkcan Uçan
 	signingKey = 298255D05279ABBE
 [credential]

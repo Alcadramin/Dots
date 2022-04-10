@@ -6,7 +6,7 @@ color=$(tput setaf 3)
 normal=$(tput sgr0)
 arrow="${color}${bold}=>${normal}"
 function _help() {
-  echo "Berkcan Ucan (alcadramin) <hello@berkcan.me>"
+  echo "Berkcan Ucan (alcadramin) <hello@alca.dev>"
   echo "${bold}Description:${normal} This script will help you to setup your environment and load dotfiles as well as create a backup."
   echo ""
   echo "${bold}USAGE: ${normal}"

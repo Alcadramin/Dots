@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ##
-# Author: alcadramin <hello@berkcan.me>
+# Author: alcadramin <hello@alca.dev>
 # Github: @alcadramin
 # Gitlab: @alcadramin
 # Reddit: @panlazy
