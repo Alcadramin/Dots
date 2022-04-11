@@ -39,6 +39,12 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 
 <br />
 
+| 🎨 LeftWM                                  |
+| ------------------------------------------ |
+| ![leftwm](https://i.imgur.com/gVMkmEn.png) |
+
+<br />
+
 | 🎨 Spectrwm                                  |
 | -------------------------------------------- |
 | ![spectrwm](https://i.imgur.com/mJf2qoj.jpg) |
