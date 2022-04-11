@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+echo "UnloadTheme" > $XDG_RUNTIME_DIR/leftwm/commands.pipe
+
+pkill picom 
+pkill polybar
+
