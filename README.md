@@ -41,7 +41,7 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 
 | 🎨 LeftWM                                         |
 | ------------------------------------------------- |
-| ![leftwm-tokyo](https://i.imgur.com/crRI8tR.jpg)  |
+| ![leftwm-tokyo](https://i.imgur.com/I39Eb5e.png)  |
 | ![leftwm-cobalt](https://i.imgur.com/gVMkmEn.png) |
 
 <br />
