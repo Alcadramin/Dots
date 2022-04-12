@@ -39,15 +39,17 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 
 <br />
 
-| 🎨 LeftWM                                  |
-| ------------------------------------------ |
-| ![leftwm](https://i.imgur.com/gVMkmEn.png) |
+| 🎨 LeftWM                                         |
+| ------------------------------------------------- |
+| ![leftwm-tokyo](https://i.imgur.com/crRI8tR.jpg)  |
+| ![leftwm-cobalt](https://i.imgur.com/gVMkmEn.png) |
 
 <br />
 
 | 🎨 Spectrwm                                  |
 | -------------------------------------------- |
 | ![spectrwm](https://i.imgur.com/mJf2qoj.jpg) |
+
 
 #
 ### License <img alt="" align="right" src="https://flat.badgen.net/badge/license/MIT/blue"/>
