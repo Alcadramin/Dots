@@ -7,13 +7,14 @@ filetype off                  " required
 call plug#begin()
 
 " Visuals "
-  "Plug 'itchyny/lightline.vim'
   "Plug 'nvim-lualine/lualine.nvim'
-  Plug 'vim-airline/vim-airline'
+  "Plug 'vim-airline/vim-airline'
+  Plug 'itchyny/lightline.vim'
   Plug 'frazrepo/vim-rainbow'
+  Plug 'tjdevries/colorbuddy.nvim'
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'GlennLeo/cobalt2'
-  Plug 'tjdevries/colorbuddy.nvim'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'lalitmee/cobalt2.nvim'
   Plug 'glepnir/dashboard-nvim'
   Plug 'junegunn/goyo.vim'
@@ -46,9 +47,13 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme & Customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"colorscheme dracula
-colorscheme cobalt2
 "lua require('colorbuddy').colorscheme('cobalt2')
+"colorscheme dracula
+"colorscheme cobalt2
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+colorscheme tokyonight
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
@@ -110,8 +115,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "       \ 'colorscheme': 'one',
 "       \ }
 
+let g:lightline = {'colorscheme': 'tokyonight'}
+
 " Always show statusline
-" set laststatus=2
+set laststatus=2
 
 " Uncomment to prevent non-normal modes showing in powerline and below powerline.
 " set noshowmode
@@ -119,9 +126,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Lualine
 " lua require('lualine').setup()
 
-let g:airline#extensions#tabline#enabled = 1
-let g:rigel_airline = 1
-let g:airline_theme = 'rigel'
+"let g:rigel_airline = 1
+"let g:airline_theme = 'rigel'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme = "tokyonight"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
