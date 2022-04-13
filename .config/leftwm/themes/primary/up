@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Down the last running theme
