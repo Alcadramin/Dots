@@ -12,12 +12,22 @@
 modkey = "Mod4"
 mousekey = "Mod4"
 workspaces = []
-tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-layouts = ["MainAndVertStack", "MainAndHorizontalStack", "GridHorizontal", "Fibonacci", "Monocle"]
 scratchpad = []
+tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+layouts = [
+  "MainAndVertStack", 
+  "Monocle"
+]
+window_rules = [
+  {window_class = "discord", spawn_on_tag = 5},
+  {window_class = "spotify", spawn_on_tag = 5},
+  {window_class = "Spotify", spawn_on_tag = 5}
+]
+
+layout_mode = "Tag"
 disable_current_tag_swap = true
 focus_behaviour = "Sloppy"
-focus_new_windows = true
+focus_new_windows = false
 
 #=======================#
 #      KEYBINDINGS      #
@@ -157,6 +167,16 @@ key = "h"
 command = "ToggleFullScreen"
 modifier = ["modkey"]
 key = "f"
+
+[[keybind]]
+command = "NextLayout"
+modifier = ["modkey"]
+key = "Tab"
+
+[[keybind]]
+command = "PreviousLayout"
+modifier = ["modkey", "Control"]
+key = "j"
 
 # Workspace Keys
 [[keybind]]
