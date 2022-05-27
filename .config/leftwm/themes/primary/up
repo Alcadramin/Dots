@@ -19,11 +19,13 @@ do
 done
 
 # Start my apps
-nitrogen --restore
+/usr/bin/sh -c /home/alcadramin/.config/xrandr.sh
 picom -b --experimental-backends
 xfce4-power-manager
-numlockx on
+numlockx on &
+nitrogen --restore &
+parcellite &
 /usr/libexec/polkit-gnome-authentication-agent-1 &
 /usr/libexec/xfce4/notifyd/xfce4-notifyd &
-/usr/bin/sh -c /home/alcadramin/.config/xrandr.sh
+/usr/bin/emacs --daemon &
 

@@ -21,7 +21,8 @@ layouts = [
 window_rules = [
   {window_class = "discord", spawn_on_tag = 5},
   {window_class = "spotify", spawn_on_tag = 5},
-  {window_class = "Spotify", spawn_on_tag = 5}
+  {window_class = "Spotify", spawn_on_tag = 5},
+  {window_class = "pinentry-gtk-2", spawn_floating = true, height = 300, width = 200} 
 ]
 
 layout_mode = "Tag"
@@ -34,6 +35,12 @@ focus_new_windows = false
 #=======================#
 
 # App Keys
+[[keybind]]
+command = "Execute"
+value = "emacsclient -c -a 'emacs'"
+modifier = ["Control"]
+key = "e"
+
 [[keybind]]
 command = "Execute"
 value = "rofi -show drun"
@@ -122,7 +129,7 @@ key = "r"
 command = "Execute"
 value = "loginctl kill-session $XDG_SESSION_ID"
 modifier = ["modkey", "Shift"]
-key = "e"
+key = "x"
 
 [[keybind]]
 command = "Execute"
