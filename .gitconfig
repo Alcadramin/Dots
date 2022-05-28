@@ -3,7 +3,7 @@
 [user]
 	email = hello@alca.dev
 	name = Berkcan Uçan
-	signingKey = 298255D05279ABBE
+	signingKey = 67566687CAA64033
 [credential]
 	helper = cache --timeout=3600
 [commit]

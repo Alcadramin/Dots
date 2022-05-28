@@ -1,7 +1,7 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
-;(package! dashboard)
+(package! dashboard)
 ;(package! dired-open)
 ;(package! centaur-tabs)
 ;(package! resize-window)

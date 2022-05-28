@@ -21,6 +21,9 @@ call plug#begin()
   Plug 'junegunn/limelight.vim'
   Plug 'Rigellute/rigel'
   Plug 'junegunn/vim-emoji'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'kyazdani42/nvim-web-devicons' 
+  Plug 'romgrk/barbar.nvim'
 
 " File Management "
   Plug 'vifm/vifm.vim'
@@ -28,8 +31,6 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'kyazdani42/nvim-web-devicons' 
 
 " Language Specific "
   "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }

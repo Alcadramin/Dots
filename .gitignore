@@ -19,6 +19,7 @@
 !.xprofile
 !.Xresources
 !.zshrc
+!sync-home.sh
 
 # .config subdir
 !.config/alacritty

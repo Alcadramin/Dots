@@ -61,7 +61,10 @@ layout(){
 
 SLEEP_SEC=0.5
 while :; do
+    # With disk & wifi
     #echo "+@fg=5; $(kernel)+@fg=0; | +@fg=6; $(cpu)+@fg=0; | +@fg=2;  $(mem)+@fg=0; | +@fg=3; $(hdd)+@fg=0; | +@fg=4; $(vol)+@fg=0; | +@fg=6;  $(wifi)+@fg=0; | +@fg=2; $(layout)+@fg=0; | +@fg=5;"
-    echo "+@fg=5; $(kernel)+@fg=0; | +@fg=6; $(cpu)+@fg=0; | +@fg=2;  $(mem)+@fg=0; | +@fg=4; $(vol)+@fg=0; | +@fg=6;$(net)+@fg=0; | +@fg=2; $(layout)+@fg=0; | +@fg=5;"
+
+    # Without disk & network conf
+    echo "+@fg=5; $(kernel)+@fg=0; | +@fg=6; $(cpu)+@fg=0; | +@fg=2; $(mem)+@fg=0; | +@fg=4; $(vol)+@fg=0; | +@fg=6;$(net)+@fg=0; | +@fg=2; $(layout)+@fg=0; | +@fg=5;"
 	sleep $SLEEP_SEC
 done
