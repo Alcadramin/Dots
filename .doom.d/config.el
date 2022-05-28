@@ -77,28 +77,33 @@
       (:prefix ("d". "Treemacs")
        :desc "Treemacs mode" "t" 'treemacs))
 
+(map! :leader
+      (:prefix ("-" . "open file")
+       :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/Org/agenda.org"))))
+
+(define-key global-map (kbd "C-#") 'mc/mark-next-like-this-word)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;      MISC CONFIG (Disabling most of it for now, it's getting bloat :P)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(beacon-mode 1)
+
 ;; Enable rainbow mode
 (add-hook 'css-mode-hook #'rainbow-mode)
-
-;; PDF Minor Mode
-;(use-package pdf-view
-;  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
-;  :hook (pdf-tools-enabled . hide-mode-line-mode)
-;  :config
-;  (setq pdf-view-midnight-colors '("#eff0eb" . "#282a36")))
 
 ;; Org mode stuff
 (setq org-directory "~/Org/")
 
-(map! :leader
-      (:prefix ("-" . "open file")
-       :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/Org/agenda.org"))))
+;; PDF Minor Mode
+(use-package pdf-view
+  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
+  :hook (pdf-tools-enabled . hide-mode-line-mode)
+  :config
+  (setq pdf-view-midnight-colors '("#eff0eb" . "#282a36")))
+
 
 ;(setq centaur-tabs-set-bar 'over
 ;      centaur-tabs-set-icons t
