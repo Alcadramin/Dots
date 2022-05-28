@@ -21,8 +21,8 @@
 
 ;; Set Font
 (setq doom-font
-      (font-spec :family "Victor Mono" :size 13 :weight 'bold)
-      doom-variable-pitch-font (font-spec :family "Victor Mono" :size 13)
+      (font-spec :family "Victor Mono" :size 14 :weight 'bold)
+      doom-variable-pitch-font (font-spec :family "Victor Mono" :size 14)
       doom-big-font (font-spec :family "Victor Mono" :size 16))
 
 (after! doom-themes
@@ -82,6 +82,7 @@
        :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/Org/agenda.org"))))
 
 (define-key global-map (kbd "C-#") 'mc/mark-next-like-this-word)
+(define-key global-map (kbd "C-'") 'mc/mark-all-words-like-this)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -90,6 +91,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (beacon-mode 1)
+(setq beacon-color '"#ff9e64")
 
 ;; Enable rainbow mode
 (add-hook 'css-mode-hook #'rainbow-mode)
