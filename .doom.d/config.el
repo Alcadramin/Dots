@@ -127,17 +127,19 @@
 ;;      DASHBOARD
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
 
 (use-package dashboard
-  :init        (setq dashboard-set-heading-icons t)
+  :init        
+  (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Doom Emacs")
   (setq dashboard-image-banner-max-height 400)
   (setq dashboard-startup-banner (file-truename "~/.doom.d/images/akame2.png"))
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
-                          (bookmarks . 5)
                           (projects . 5)
+                          (bookmarks . 5)
                           (agenda . 5 )))
   :config
   (dashboard-setup-startup-hook)
@@ -145,7 +147,6 @@
                                 (bookmarks . "book"))))
 
 (setq doom-fallback-buffer "*dashboard*")
-(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))) ;; To run with emacs daemon.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

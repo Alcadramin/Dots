@@ -73,7 +73,6 @@ if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/alcadramin/.local/lib/google-cloud-sdk/completion.zsh.inc'; fi
 
-
 ### MY ALIASES ###
 alias vim="nvim"
 alias startemacs="/usr/bin/emacs --daemon"
@@ -104,7 +103,8 @@ alias gaa="git add ."
 alias gcm="git commit -m"
 alias gca="git commit --amend --no-edit"
 alias gst="git status"
-alias gps="git push -u origin main"
+alias gpl="git pull"
+alias gps="git push -u origin"
 alias gtc="git rev-list --all --count"
 
 colorscript --random
