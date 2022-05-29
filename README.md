@@ -1,4 +1,10 @@
-## 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://flat.badgen.net/github/stars/alcadramin/dots"/>
+<p align="center">
+  <img src="https://cdn-icons-png.flaticon.com/512/129/129356.png" width="150" height="auto" alt="dotfiles" />
+</p>
+
+#
+
+### 🐈 Hello! Thank you for visiting. I keep my stuff here! <img alt="" align="right" src="https://img.shields.io/badge/With 🤍 and-Doom Emacs-blueviolet?style=flat-square&logo=GNU Emacs&logoColor=white"/>
 
 <a href="https://i.imgur.com/15nq6HJ.png">
   <img src="https://i.imgur.com/15nq6HJ.png" alt="i3" align="right" width="400px"/>
@@ -18,7 +24,8 @@ Details of my setup..
 - **GUI & CLI IDE/Text Editor** • [Neovim](https://neovim.io/), [Kakoune](https://kakoune.org/) and [Doom Emacs](https://github.com/hlissner/doom-emacs) 😈
 
 #
-### How to install? <img alt="" align="right" src="https://flat.badgen.net/github/issues/alcadramin/dots"/>
+
+### How to install? <img alt="" align="right" src="https://flat.badgen.net/github/issues/alcadramin/dots"/><img alt="" align="right" src="https://flat.badgen.net/github/stars/alcadramin/dots"/>
 
 <a href="https://i.imgur.com/mZO9Jg8.png">
   <img src="https://i.imgur.com/mZO9Jg8.png" alt="emacs" align="right" width="400px"/>
@@ -31,6 +38,7 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 - For blur and rounded corners use Picom^9.1 with `--experimental-backends` flag.
 
 #
+
 ### Screenshots
 
 | 🎨 Qtile                                  |
@@ -39,10 +47,10 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 
 <br />
 
-| 🎨 LeftWM                                         |
-| ------------------------------------------------- |
-| ![leftwm-tokyo](https://i.imgur.com/I39Eb5e.png)  |
-| ![leftwm-cobalt](https://i.imgur.com/gVMkmEn.png) |
+| 🎨 LeftWM                                        |
+| ------------------------------------------------ |
+| ![leftwm-tokyo](https://i.imgur.com/I39Eb5e.png) |
+| ![leftwm-emacs](https://i.imgur.com/bRvooY3.png) |
 
 <br />
 
@@ -50,9 +58,8 @@ I had a [bash script](setup.sh) but it's not up to date for the time being so yo
 | -------------------------------------------- |
 | ![spectrwm](https://i.imgur.com/mJf2qoj.jpg) |
 
-
 #
+
 ### License <img alt="" align="right" src="https://flat.badgen.net/badge/license/MIT/blue"/>
 
 - The files and scripts in this repository are licensed under the [MIT](LICENSE.md) License.
-
