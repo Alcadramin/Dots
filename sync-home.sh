@@ -16,7 +16,8 @@ git ls-tree -r main --name-only > "$TEMP"
 while read -r DEST; do
     TARGET="$HOME/$DEST"
 
-    if [[ -e $TARGET ]]; then
+    # Exclude big folders to speed up.
+    if [[ -e $TARGET && $TARGET != *".icons"* && $TARGET != *".themes"* ]]; then
         DIFF=$(diff "$TARGET" "$DEST")
         if [[ -z "$DIFF" ]]; then
             continue;
