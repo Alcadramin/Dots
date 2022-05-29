@@ -8,7 +8,7 @@ This is my **personal configuration** for my favorite window managers and some a
 
 Details of my setup..
 
-- **Window Manager** • [Xmonad](https://xmonad.org/), [qtile](http://www.qtile.org/), [spectrwm](https://github.com/conformal/spectrwm), [i3-gaps](https://github.com/Airblader/i3) 🎨
+- **Window Manager** • [LeftWM](https://github.com/leftwm/leftwm), [Xmonad](https://xmonad.org/), [qtile](http://www.qtile.org/), [spectrwm](https://github.com/conformal/spectrwm), [i3-gaps](https://github.com/Airblader/i3) 🎨
 - **Shell** • [Zsh](https://www.zsh.org/) 🐚 with [oh my zsh](https://github.com/ohmyzsh/ohmyzsh) framework.
 - **Terminal** • [Alacritty](https://github.com/alacritty/alacritty) and [Kitty](https://sw.kovidgoyal.net/kitty/) <kbd>available</kbd>.
 - **Compositor** • [Picom](https://github.com/yshui/picom) 🍩 rounded corners and blur!

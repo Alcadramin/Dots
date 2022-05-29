@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# So if you've noticed, the directory structure of my repo and home folder is exactly the same.
+# I got sick of manually copying files to my repo and this stupid script is came to live.
+# It's just syncs exactly to the files in this repo from my home folder, if it's exist. 
+# Feel free to steal it :D
+
 TEMP=/tmp/included
 
 if [[ -e $TEMP  ]]; then
