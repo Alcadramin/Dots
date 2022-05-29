@@ -132,7 +132,8 @@
   :init        (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Doom Emacs")
-  (setq dashboard-startup-banner (file-truename "~/.doom.d/images/black_hole.png"))
+  (setq dashboard-image-banner-max-height 400)
+  (setq dashboard-startup-banner (file-truename "~/.doom.d/images/akame2.png"))
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
                           (bookmarks . 5)
