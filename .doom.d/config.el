@@ -49,11 +49,12 @@
             tex-mode
             latex-mode))
 
-;; Company stuff
-;(use-package company-tabnine :ensure t)
-(require 'company-tabnine)
 (setq company-idle-delay 0)
 (setq company-show-quick-access t)
+
+;; TabNine - Proprietary AI autocompletion plugin
+(use-package company-tabnine
+  :ensure t)
 (add-to-list 'company-backends #'company-tabnine)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -72,16 +73,25 @@
        :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
        :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
 
-;; Setting "SPC + d -> t" to enable treemacs-mode
+;; Set "[SPC] + [d] -> [t]" to enable treemacs-mode
 (map! :leader
       (:prefix ("d". "Treemacs")
        :desc "Treemacs mode" "t" 'treemacs))
 
+;; Set "[SPC] + [-] -> [a]" to edit agenda file
 (map! :leader
       (:prefix ("-" . "open file")
        :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/Org/agenda.org"))))
 
+;; Set "[SPC] + [v] -> [v]" to launch vterm
+(map! :leader
+     (:prefix ("v". "vterm")
+     :desc "Launch vterm" "v" 'vterm))
+
+;; "[CTRL] + [#]" select next occurance
 (define-key global-map (kbd "C-#") 'mc/mark-next-like-this-word)
+
+;; "[CTRL] + [']" select all occurances
 (define-key global-map (kbd "C-'") 'mc/mark-all-words-like-this)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -90,6 +100,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Enable beacon
 (beacon-mode 1)
 (setq beacon-color '"#ff9e64")
 
@@ -106,7 +117,7 @@
   :config
   (setq pdf-view-midnight-colors '("#eff0eb" . "#282a36")))
 
-
+;; Centaur Tabs
 ;(setq centaur-tabs-set-bar 'over
 ;      centaur-tabs-set-icons t
 ;      centaur-tabs-gray-out-icons 'buffer
