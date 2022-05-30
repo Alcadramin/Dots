@@ -56,6 +56,11 @@
 (use-package company-tabnine
   :ensure t)
 (add-to-list 'company-backends #'company-tabnine)
+(add-to-list 'company-backends #'company-tide)
+
+(eval-after-load 'rjsx-mode
+  '(progn
+     (define-key rjsx-mode-map "<" nil)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
