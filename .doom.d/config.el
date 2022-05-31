@@ -58,9 +58,20 @@
 (add-to-list 'company-backends #'company-tabnine)
 (add-to-list 'company-backends #'company-tide)
 
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+(setq company-tooltip-align-annotations t)
+
 (eval-after-load 'rjsx-mode
   '(progn
      (define-key rjsx-mode-map "<" nil)))
+
+(add-hook 'js2-mode-hook #'setup-tide-mode)
+(setq lsp-file-watch-threshold 10000)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
