@@ -148,7 +148,7 @@
 ;                                               (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
 ;                                               (kbd "g <down>")  'centaur-tabs-forward-group
 ;                                               (kbd "g <up>")    'centaur-tabs-backward-group)
-;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;      DASHBOARD
@@ -175,51 +175,50 @@
 
 (setq doom-fallback-buffer "*dashboard*")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;      DIRED
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-;(map! :leader
-;      (:prefix ("d" . "dired") ;; Map dired to "SPC + d -> d"
-;       :desc "Open dired" "d" #'dired
-;       :desc "Dired jump to current" "j" #'dired-jump)
-;      (:after dired
-;       (:map dired-mode-map
-;        :desc "Peep-dired image previews" "d p" #'peep-dired
-;        :desc "Dired view file" "d v" #'dired-view-file)))
-;
-;(evil-define-key 'normal dired-mode-map
-;  (kbd "M-RET") 'dired-display-file
-;  (kbd "h") 'dired-up-directory
-;  (kbd "l") 'dired-open-file ; use dired-find-file instead of dired-open.
-;  (kbd "m") 'dired-mark
-;  (kbd "t") 'dired-toggle-marks
-;  (kbd "u") 'dired-unmark
-;  (kbd "C") 'dired-do-copy
-;  (kbd "D") 'dired-do-delete
-;  (kbd "J") 'dired-goto-file
-;  (kbd "M") 'dired-chmod
-;  (kbd "O") 'dired-chown
-;  (kbd "P") 'dired-do-print
-;  (kbd "R") 'dired-rename
-;  (kbd "T") 'dired-do-touch
-;  (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill
-;  (kbd "+") 'dired-create-directory
-;  (kbd "-") 'dired-up-directory
-;  (kbd "% l") 'dired-downcase
-;  (kbd "% u") 'dired-upcase
-;  (kbd "; d") 'epa-dired-do-decrypt
-;  (kbd "; e") 'epa-dired-do-encrypt)
-;(evil-define-key 'normal peep-dired-mode-map
-;  (kbd "j") 'peep-dired-next-file
-;  (kbd "k") 'peep-dired-prev-file)
-;(add-hook 'peep-dired-hook 'evil-normalize-keymaps)
-;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-;(setq dired-open-extensions '(("gif" . "feh")
-;                              ("jpg" . "feh")
-;                              ("png" . "feh")
-;                              ("mkv" . "mpv")
-;                              ("mp4" . "mpv")))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;      DIRED
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(map! :leader
+      (:prefix ("d" . "dired") ;; Map dired to "SPC + d -> d"
+       :desc "Open dired" "d" #'dired
+       :desc "Dired jump to current" "j" #'dired-jump)
+      (:after dired
+       (:map dired-mode-map
+        :desc "Peep-dired image previews" "d p" #'peep-dired
+        :desc "Dired view file" "d v" #'dired-view-file)))
+
+(evil-define-key 'normal dired-mode-map
+  (kbd "M-RET") 'dired-display-file
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-open-file ; use dired-find-file instead of dired-open.
+  (kbd "m") 'dired-mark
+  (kbd "t") 'dired-toggle-marks
+  (kbd "u") 'dired-unmark
+  (kbd "C") 'dired-do-copy
+  (kbd "D") 'dired-do-delete
+  (kbd "J") 'dired-goto-file
+  (kbd "M") 'dired-chmod
+  (kbd "O") 'dired-chown
+  (kbd "P") 'dired-do-print
+  (kbd "R") 'dired-rename
+  (kbd "T") 'dired-do-touch
+  (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill
+  (kbd "+") 'dired-create-directory
+  (kbd "-") 'dired-up-directory
+  (kbd "% l") 'dired-downcase
+  (kbd "% u") 'dired-upcase
+  (kbd "; d") 'epa-dired-do-decrypt
+  (kbd "; e") 'epa-dired-do-encrypt)
+(evil-define-key 'normal peep-dired-mode-map
+  (kbd "j") 'peep-dired-next-file
+  (kbd "k") 'peep-dired-prev-file)
+(add-hook 'peep-dired-hook 'evil-normalize-keymaps)
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(setq dired-open-extensions '(("gif" . "feh")
+                              ("jpg" . "feh")
+                              ("png" . "feh")
+                              ("mkv" . "mpv")
+                              ("mp4" . "mpv")))
